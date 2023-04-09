@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>Hexo</title>
+        <subtitle></subtitle>
+        <icon>http://example.com/images/favicon.ico</icon>
+        <link>http://example.com</link>
+        <author>
+          <name>Blank</name>
+        </author>
+        <description></description>
+        <language>chinese</language>
+        <pubDate>Sun, 09 Apr 2023 11:33:00 +0800</pubDate>
+        <lastBuildDate>Sun, 09 Apr 2023 11:33:00 +0800</lastBuildDate>
+        <item>
+            <guid isPermalink="true">http://example.com/2023/04/09/hello-world/</guid>
+            <title>haha</title>
+            <link>http://example.com/2023/04/09/hello-world/</link>
+            <pubDate>Sun, 09 Apr 2023 11:33:00 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;nihao&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

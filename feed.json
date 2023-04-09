@@ -1,0 +1,18 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "Hexo",
+    "subtitle": "",
+    "icon": "http://example.com/images/favicon.ico",
+    "description": "",
+    "home_page_url": "http://example.com",
+    "items": [
+        {
+            "id": "http://example.com/2023/04/09/hello-world/",
+            "url": "http://example.com/2023/04/09/hello-world/",
+            "title": "haha",
+            "date_published": "2023-04-09T03:33:00.000Z",
+            "content_html": "<p>nihao</p>\n",
+            "tags": []
+        }
+    ]
+}
