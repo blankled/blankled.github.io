@@ -290,13 +290,13 @@
   background-color: var(--color-grey);
 }
 .v .item .tag.master {
-  background-color: var(--color-blue);
+  background-color: var(--color-orange);
 }
 .v .item .tag.friend {
   background-color: var(--color-aqua);
 }
 .v .item .tag.investor {
-  background-color: var(--color-gold);
+  background-color: var(--color-pink);
 }
 .v .item .at {
   color: var(--primary-color);
