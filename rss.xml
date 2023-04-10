@@ -10,8 +10,144 @@
         </author>
         <description></description>
         <language>zh-CN</language>
-        <pubDate>Sun, 09 Apr 2023 11:33:00 +0800</pubDate>
-        <lastBuildDate>Sun, 09 Apr 2023 11:33:00 +0800</lastBuildDate>
+        <pubDate>Mon, 10 Apr 2023 19:08:20 +0800</pubDate>
+        <lastBuildDate>Mon, 10 Apr 2023 19:08:20 +0800</lastBuildDate>
+        <item>
+            <guid isPermalink="true">http://example.com/2023/04/10/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/</guid>
+            <title>信息搜集</title>
+            <link>http://example.com/2023/04/10/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/</link>
+            <pubDate>Mon, 10 Apr 2023 19:08:20 +0800</pubDate>
+            <description><![CDATA[ &lt;h2 id=&#34;web&#34;&gt;&lt;a href=&#34;#web&#34; class=&#34;headerlink&#34; title=&#34;web&#34;&gt;&lt;/a&gt;web&lt;/h2&gt;&lt;h3 id=&#34;cdn获取真实ip&#34;&gt;&lt;a href=&#34;#cdn获取真实ip&#34; class=&#34;headerlink&#34; title=&#34;cdn获取真实ip&#34;&gt;&lt;/a&gt;cdn获取真实ip&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;方法一：&lt;br&gt;从全球各地去ping他的服务器（万一在一些穷乡僻壤的地方ping到了呢）&lt;/li&gt;
+&lt;li&gt;方法二：&lt;br&gt;使用邮件订阅或RSS订阅的一种形式（大部分cdn不会防御件订阅或RSS订阅的东西）&lt;/li&gt;
+&lt;li&gt;方法三：&lt;br&gt;ping二级域名（有些网站的二级域名可能不会做cdn）&lt;/li&gt;
+&lt;li&gt;方法四：&lt;br&gt;用nslookup&lt;/li&gt;
+&lt;li&gt;方法五：&lt;br&gt;查找一下域名的历史解析记录，毕竟域名再用cdn之前可能是用真实的ip&lt;/li&gt;
+&lt;li&gt;F6：&lt;br&gt;phpinfo上可能显示他的真实ip&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;域名–渗透&#34;&gt;&lt;a href=&#34;#域名–渗透&#34; class=&#34;headerlink&#34; title=&#34;域名–渗透&#34;&gt;&lt;/a&gt;域名–渗透&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;1.确定站点是否是主站&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果是，先进行子域名的挖掘，然后从子域名入手，确定一下使用了什么服务器（中间件），查看一下他的CMS，用什么编程语言，大概使用了什么数据库，有没有使用cdn，如果有cdn，则需要搜集一下网站的真实ip，然后看一下网站的源代码是不是存在着信息泄露，有时还可以进一步对网站进行信息搜集，比如：whois查询，ip访查，使用google进行查询（黑客引擎进行敏感信息的搜集），查看目标的功能模块有没有文件上传，sql注入，xss等等漏洞。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;扫描问题&#34;&gt;&lt;a href=&#34;#扫描问题&#34; class=&#34;headerlink&#34; title=&#34;扫描问题&#34;&gt;&lt;/a&gt;扫描问题&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Mysql 只扫到了80端口&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;可能将Mysql端口改了&lt;/li&gt;
+&lt;li&gt;也可能是站库分离&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Mysql数据库与网站分离，渗透进去后你可能发现他的配置文件里可能有去远程连接其他专门的数据库服务器的配置文件&lt;blockquote&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;3306端口不对外开放（用防火墙将自己的3306端口从内部deny掉了）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;搜集目标网站注册人的信息&#34;&gt;&lt;a href=&#34;#搜集目标网站注册人的信息&#34; class=&#34;headerlink&#34; title=&#34;搜集目标网站注册人的信息&#34;&gt;&lt;/a&gt;搜集目标网站注册人的信息&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;考虑用telegram上的一些社工库，看一下有没有他泄露的一些密码，尝试使用其泄露的密码去登录网站的后台。&lt;/li&gt;
+&lt;li&gt;搜索引擎搜索邮箱关键词，看看他有没有在网上发布一些言论。&lt;/li&gt;
+&lt;li&gt;利用搜索到的一些关联信息去找出其他的关联信息（邮箱，账号等等）与其聊天，套取一些信息。&lt;/li&gt;
+&lt;li&gt;用社会工程学的方法去找到他的一些社交帐号（可能会在里面找到管理员设置密码的一些习惯）。&lt;/li&gt;
+&lt;li&gt;利用已经拥有的信息生成一个专用的字典。&lt;/li&gt;
+&lt;li&gt;观察管理员会逛哪些比较大众性的网站，通过这些网站可能会看到他密码提示的一些内容。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;windows-or-linux&#34;&gt;&lt;a href=&#34;#windows-or-linux&#34; class=&#34;headerlink&#34; title=&#34;windows or linux&#34;&gt;&lt;/a&gt;windows or linux&lt;/h3&gt;&lt;p&gt; 区分–&amp;gt; windows大小写不敏感，Linux大小写敏感&lt;/p&gt;
+&lt;h3 id=&#34;有一个网站&#34;&gt;&lt;a href=&#34;#有一个网站&#34; class=&#34;headerlink&#34; title=&#34;有一个网站&#34;&gt;&lt;/a&gt;有一个网站&lt;/h3&gt;&lt;h4 id=&#34;如果知道（-xxx-xxxeditor-php-或（-xxx-admin-xxxx-php&#34;&gt;&lt;a href=&#34;#如果知道（-xxx-xxxeditor-php-或（-xxx-admin-xxxx-php&#34; class=&#34;headerlink&#34; title=&#34;如果知道（./xxx/xxxeditor.php)或（./xxx/admin/xxxx.php)&#34;&gt;&lt;/a&gt;如果知道（./xxx/xxxeditor.php)或（./xxx/admin/xxxx.php)&lt;/h4&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;直接在网站的二级文件xxx底下扫描敏感文件/目录。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;如果在网站的表面&#34;&gt;&lt;a href=&#34;#如果在网站的表面&#34; class=&#34;headerlink&#34; title=&#34;如果在网站的表面&#34;&gt;&lt;/a&gt;如果在网站的表面&lt;/h4&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;在表面进行元素审查时，可以知道这个网站所利用的防护软件&lt;ul&gt;
+&lt;li&gt;在敏感操作中被拦截/通过界面无法判断使用了什么防护软件时，可以用f12去看一下html&lt;pre&gt;&lt;code&gt;  * 如：&amp;lt;护卫神&amp;gt; ---会出现&amp;lt;hws&amp;gt;xxxx&amp;lt;/hws&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;有时可以用img标签，当图片加载不出来会触发onerror属性,来获取管理员的一个后台路径&lt;/li&gt;
+&lt;li&gt;还可以尝试在src里指定一个远程的脚本文件，获取referer&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;有时网站后台会做限制&#34;&gt;&lt;a href=&#34;#有时网站后台会做限制&#34; class=&#34;headerlink&#34; title=&#34;有时网站后台会做限制&#34;&gt;&lt;/a&gt;有时网站后台会做限制&lt;/h4&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;有时src属性的结尾必须要是.jpg .png .gif,&lt;ul&gt;
+&lt;li&gt;可以考虑用.htaccess在远程服务器上修改apache的配置文件&lt;/li&gt;
+&lt;li&gt;或将.jpg文件当作php执行&lt;pre&gt;&lt;code&gt;     * AppType application/x-http-php .jpg(打进去后一定要删掉）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;当在表面上没有看到一些漏洞&#34;&gt;&lt;a href=&#34;#当在表面上没有看到一些漏洞&#34; class=&#34;headerlink&#34; title=&#34;当在表面上没有看到一些漏洞&#34;&gt;&lt;/a&gt;当在表面上没有看到一些漏洞&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;1 可以去查找旁站&lt;br&gt;           * 旁站—-&amp;gt; 同一服务器上可能开了多台虚拟机，打下一台后可以借此把其他的也给打下来&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;百度域名的查找&lt;/li&gt;
+&lt;li&gt;百度ip访查域名（通过这个ip查找挂在其下的有哪些域名）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;信息搜集流程&#34;&gt;&lt;a href=&#34;#信息搜集流程&#34; class=&#34;headerlink&#34; title=&#34;信息搜集流程&#34;&gt;&lt;/a&gt;信息搜集流程&lt;/h3&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;服务器的相关信息&lt;ul&gt;
+&lt;li&gt;真实ip&lt;/li&gt;
+&lt;li&gt;系统类型及版本&lt;/li&gt;
+&lt;li&gt;开放端口&lt;/li&gt;
+&lt;li&gt;使用什么waf&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;网站的指纹&lt;ul&gt;
+&lt;li&gt;CMS&lt;/li&gt;
+&lt;li&gt;cdn&lt;/li&gt;
+&lt;li&gt;证书&lt;/li&gt;
+&lt;li&gt;dns记录&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;whois的信息（社工库中寻找）&lt;ul&gt;
+&lt;li&gt;姓名&lt;/li&gt;
+&lt;li&gt;备案&lt;/li&gt;
+&lt;li&gt;邮箱&lt;/li&gt;
+&lt;li&gt;电话访查&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;子域名 旁站  c段（ip的网段）&lt;/li&gt;
+&lt;li&gt;google进行针对化的搜索&lt;ul&gt;
+&lt;li&gt;查pdf文件&lt;/li&gt;
+&lt;li&gt;中间件版本&lt;/li&gt;
+&lt;li&gt;弱口令&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;扫描网站目录&lt;br&gt; 爆破后台&lt;br&gt; 测试文件&lt;br&gt; 敏感文件&lt;/li&gt;
+&lt;li&gt;传输协议&lt;ul&gt;
+&lt;li&gt;exp&lt;/li&gt;
+&lt;li&gt;寻找相应源码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;漏洞挖掘&#34;&gt;&lt;a href=&#34;#漏洞挖掘&#34; class=&#34;headerlink&#34; title=&#34;漏洞挖掘&#34;&gt;&lt;/a&gt;漏洞挖掘&lt;/h3&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;浏览网站&lt;ul&gt;
+&lt;li&gt;看一下网站的规模，功能，特点&lt;/li&gt;
+&lt;li&gt;查看端口，目录，弱口令（进行一个扫描）&lt;ul&gt;
+&lt;li&gt;有端口响应，要对其进行探测&lt;ul&gt;
+&lt;li&gt;如：rsync，心脏出血漏洞，mysql漏洞，ftp,ssh,弱口令&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;xss   sql注入  文件上传  命令注入     csrf    cookie安全检查     敏感信息     通信数据传输     暴力破解     越权访问     未授权访问     目录遍历     文件包含     重放攻击     服务器漏洞检测     漏洞扫描&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://example.com/2023/04/09/Internet%20Security/hello-world/</guid>
             <title>SQL注入</title>
