@@ -10,9 +10,9 @@
     </author>
     <updated>2023-04-10T11:08:20.000Z</updated>
     <entry>
-        <id>http://example.com/2023/04/10/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/</id>
+        <id>http://example.com/2023/04/10/Internet%20Security/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/</id>
         <title>信息搜集</title>
-        <link rel="alternate" href="http://example.com/2023/04/10/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/"/>
+        <link rel="alternate" href="http://example.com/2023/04/10/Internet%20Security/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/"/>
         <content type="html">&lt;h2 id=&#34;web&#34;&gt;&lt;a href=&#34;#web&#34; class=&#34;headerlink&#34; title=&#34;web&#34;&gt;&lt;/a&gt;web&lt;/h2&gt;&lt;h3 id=&#34;cdn获取真实ip&#34;&gt;&lt;a href=&#34;#cdn获取真实ip&#34; class=&#34;headerlink&#34; title=&#34;cdn获取真实ip&#34;&gt;&lt;/a&gt;cdn获取真实ip&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;方法一：&lt;br&gt;从全球各地去ping他的服务器（万一在一些穷乡僻壤的地方ping到了呢）&lt;/li&gt;
 &lt;li&gt;方法二：&lt;br&gt;使用邮件订阅或RSS订阅的一种形式（大部分cdn不会防御件订阅或RSS订阅的东西）&lt;/li&gt;
