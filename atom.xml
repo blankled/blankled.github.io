@@ -10,9 +10,9 @@
     </author>
     <updated>2023-04-09T03:33:00.000Z</updated>
     <entry>
-        <id>http://example.com/2023/04/09/hello-world/</id>
+        <id>http://example.com/2023/04/09/Internet%20Security/hello-world/</id>
         <title>SQL注入</title>
-        <link rel="alternate" href="http://example.com/2023/04/09/hello-world/"/>
+        <link rel="alternate" href="http://example.com/2023/04/09/Internet%20Security/hello-world/"/>
         <content type="html">&lt;h1 id=&#34;本周重点&#34;&gt;&lt;a href=&#34;#本周重点&#34; class=&#34;headerlink&#34; title=&#34;本周重点&#34;&gt;&lt;/a&gt;本周重点&lt;/h1&gt;&lt;h3 id=&#34;1-产生原理（实质）&#34;&gt;&lt;a href=&#34;#1-产生原理（实质）&#34; class=&#34;headerlink&#34; title=&#34;1.产生原理（实质）&#34;&gt;&lt;/a&gt;1.产生原理（实质）&lt;/h3&gt;&lt;p&gt;1.用户能调控参数（像id=2 union select 1,2,3–+)要能添加代码&lt;br&gt;2.原本数据库只执行（id=2)语句，但执行了用户拼接的一些代码&lt;/p&gt;
 &lt;h3 id=&#34;2-类型&#34;&gt;&lt;a href=&#34;#2-类型&#34; class=&#34;headerlink&#34; title=&#34;2.类型&#34;&gt;&lt;/a&gt;2.类型&lt;/h3&gt;&lt;p&gt;1.联合注入&lt;br&gt;        2.堆叠注入&lt;br&gt;        3.宽字节注入&lt;br&gt;        4.cookie注入&lt;br&gt;        5.XFF头注入&lt;br&gt;        6.UA注入（user-agent注入）&lt;br&gt;        7.Referer注入&lt;br&gt;        8.二次注入&lt;br&gt;        9.base64注入&lt;br&gt;        11.万能密码&lt;br&gt;        12.文件读写&lt;br&gt;盲注类型：&lt;br&gt;        1.基于时间的盲注     sleep()   benchmark()&lt;br&gt;        2.基于布尔的注入&lt;br&gt;        3.基于报错的注入     updatexml()  extractvalue()  floor()  exp()&lt;/p&gt;
 &lt;h3 id=&#34;语言&#34;&gt;&lt;a href=&#34;#语言&#34; class=&#34;headerlink&#34; title=&#34;语言&#34;&gt;&lt;/a&gt;语言&lt;/h3&gt;&lt;pre&gt;&lt;code class=&#34;SQL&#34;&gt;一，union select
