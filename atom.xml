@@ -139,6 +139,8 @@ union all %23%a0 select 1,2,3 --+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h4 id=&#34;思考&#34;&gt;&lt;a href=&#34;#思考&#34; class=&#34;headerlink&#34; title=&#34;思考&#34;&gt;&lt;/a&gt;思考&lt;/h4&gt;&lt;p&gt;有什么想法或心得体会，都可以拿出来分享下。&lt;/p&gt;
 </content>
+        <category term="网安" scheme="http://example.com/categories/%E7%BD%91%E5%AE%89/" />
+        <category term="Top10" scheme="http://example.com/tags/Top10/" />
         <updated>2023-04-09T03:33:00.000Z</updated>
     </entry>
 </feed>
