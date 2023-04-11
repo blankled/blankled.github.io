@@ -10,8 +10,49 @@
         </author>
         <description>繁星不怕被看作流萤</description>
         <language>zh-CN</language>
-        <pubDate>Mon, 10 Apr 2023 19:08:20 +0800</pubDate>
-        <lastBuildDate>Mon, 10 Apr 2023 19:08:20 +0800</lastBuildDate>
+        <pubDate>Tue, 11 Apr 2023 16:00:06 +0800</pubDate>
+        <lastBuildDate>Tue, 11 Apr 2023 16:00:06 +0800</lastBuildDate>
+        <item>
+            <guid isPermalink="true">http://example.com/2023/04/11/test/</guid>
+            <title>test</title>
+            <link>http://example.com/2023/04/11/test/</link>
+            <pubDate>Tue, 11 Apr 2023 16:00:06 +0800</pubDate>
+            <description><![CDATA[  ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://example.com/2023/04/11/Internet%20Security/page/</guid>
+            <title>OSINT</title>
+            <link>http://example.com/2023/04/11/Internet%20Security/page/</link>
+            <category term="网安" scheme="http://example.com/categories/%E7%BD%91%E5%AE%89/" />
+            <category term="信息搜集" scheme="http://example.com/tags/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/" />
+            <pubDate>Tue, 11 Apr 2023 15:39:25 +0800</pubDate>
+            <description><![CDATA[ &lt;h3 id=&#34;1-什么是OSINT&#34;&gt;&lt;a href=&#34;#1-什么是OSINT&#34; class=&#34;headerlink&#34; title=&#34;1.什么是OSINT&#34;&gt;&lt;/a&gt;1.什么是OSINT&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;OSINT（Open-source Intelligence）即开源情报搜集，是用多元化方法进行搜集、分析和通过公开信息进行决策的一种方法。在情报界，Open指的是侵略性、公开的资源.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;它是一种已被用于国家安全情报活动的方法，其目的是从报纸、新闻、网站和 SNS 等各种信息中预测国家和公司的政策。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;此外，通过使用 OSINT 收集信息，可以检测泄露的个人信息和机密信息，因此近年来它也被用于防御网络攻击。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;个人信息检查&#34;&gt;&lt;a href=&#34;#个人信息检查&#34; class=&#34;headerlink&#34; title=&#34;个人信息检查&#34;&gt;&lt;/a&gt;个人信息检查&lt;/h4&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oYXZlaWJlZW5wd25lZC5jb20v&#34;&gt;Have I Been Pwned &lt;/span&gt;&lt;ul&gt;
+&lt;li&gt;只需输入您的电子邮件地址即可检查您的个人信息是否已被泄露&lt;br&gt;&lt;img data-src=&#34;%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/1.png&#34; alt=&#34; &#34;&gt;&lt;/li&gt;
+&lt;li&gt;并且当未来发生 pwnage 并且您的帐户被盗用时，您会收到通知。&lt;br&gt;&lt;img data-src=&#34;%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/2.png&#34; alt=&#34; &#34;&gt;&lt;/li&gt;
+&lt;li&gt;还能进行域名搜索&lt;br&gt;（在整个域中搜索被盗用的帐户并接收未来的通知）&lt;br&gt; &lt;img data-src=&#34;%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/3.png&#34; alt=&#34; &#34;&gt;&lt;/li&gt;
+&lt;li&gt;还会显示一些违规网站&lt;br&gt;&lt;img data-src=&#34;%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/4.png&#34; alt=&#34; &#34;&gt;&lt;/li&gt;
+&lt;li&gt;还能查看密码是否安全&lt;br&gt;&lt;img data-src=&#34;%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/6.png&#34; alt=&#34; &#34;&gt;&lt;/li&gt;
+&lt;li&gt;还提供了一些API(当然需要$)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;2. &lt;/p&gt;
+&lt;/blockquote&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://example.com/2023/04/10/Internet%20Security/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/</guid>
             <title>信息搜集</title>
