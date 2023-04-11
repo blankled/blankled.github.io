@@ -8,18 +8,11 @@
     <author>
       <name>Blank</name>
     </author>
-    <updated>2023-04-11T08:00:06.000Z</updated>
+    <updated>2023-04-11T07:39:25.000Z</updated>
     <entry>
-        <id>http://example.com/2023/04/11/test/</id>
-        <title>test</title>
-        <link rel="alternate" href="http://example.com/2023/04/11/test/"/>
-        <content type="html"></content>
-        <updated>2023-04-11T08:00:06.000Z</updated>
-    </entry>
-    <entry>
-        <id>http://example.com/2023/04/11/Internet%20Security/page/</id>
+        <id>http://example.com/2023/04/11/Internet%20Security/OSINT/</id>
         <title>OSINT</title>
-        <link rel="alternate" href="http://example.com/2023/04/11/Internet%20Security/page/"/>
+        <link rel="alternate" href="http://example.com/2023/04/11/Internet%20Security/OSINT/"/>
         <content type="html">&lt;h3 id=&#34;1-什么是OSINT&#34;&gt;&lt;a href=&#34;#1-什么是OSINT&#34; class=&#34;headerlink&#34; title=&#34;1.什么是OSINT&#34;&gt;&lt;/a&gt;1.什么是OSINT&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;OSINT（Open-source Intelligence）即开源情报搜集，是用多元化方法进行搜集、分析和通过公开信息进行决策的一种方法。在情报界，Open指的是侵略性、公开的资源.&lt;/p&gt;
 &lt;/blockquote&gt;
