@@ -31,53 +31,60 @@
 &lt;h4 id=&#34;个人信息检查&#34;&gt;&lt;a href=&#34;#个人信息检查&#34; class=&#34;headerlink&#34; title=&#34;个人信息检查&#34;&gt;&lt;/a&gt;个人信息检查&lt;/h4&gt;&lt;blockquote&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oYXZlaWJlZW5wd25lZC5jb20v&#34;&gt;Have I Been Pwned &lt;/span&gt;&lt;ul&gt;
-&lt;li&gt;只需输入您的电子邮件地址即可检查您的个人信息是否已被泄露&lt;br&gt;&lt;img data-src=&#34;OSINT/1.png&#34; alt=&#34; &#34;&gt;&lt;/li&gt;
-&lt;li&gt;并且当未来发生 pwnage 并且您的帐户被盗用时，您会收到通知。&lt;br&gt;&lt;img data-src=&#34;OSINT/2.png&#34; alt=&#34; &#34;&gt;&lt;/li&gt;
-&lt;li&gt;还能进行域名搜索&lt;br&gt;（在整个域中搜索被盗用的帐户并接收未来的通知）&lt;br&gt; &lt;img data-src=&#34;OSINT/3.png&#34; alt=&#34; &#34;&gt;&lt;/li&gt;
-&lt;li&gt;还会显示一些违规网站&lt;br&gt;&lt;img data-src=&#34;OSINT/4.png&#34; alt=&#34; &#34;&gt;&lt;/li&gt;
-&lt;li&gt;还能查看密码是否安全&lt;br&gt;&lt;img data-src=&#34;config.jpg&#34; alt=&#34; &#34;&gt;&lt;/li&gt;
+&lt;li&gt;只需输入您的电子邮件地址即可检查您的个人信息是否已被泄露&lt;br&gt;&lt;img data-src=&#34;%5COSINT%5C1.png&#34; alt=&#34; &#34;&gt;&lt;/li&gt;
+&lt;li&gt;并且当未来发生 pwnage 并且您的帐户被盗用时，您会收到通知。&lt;br&gt;&lt;img data-src=&#34;%5COSINT%5C2.png&#34; alt=&#34; &#34;&gt;&lt;/li&gt;
+&lt;li&gt;还能进行域名搜索&lt;br&gt;（在整个域中搜索被盗用的帐户并接收未来的通知）&lt;br&gt; &lt;img data-src=&#34;%5COSINT%5C3.png&#34; alt=&#34; &#34;&gt;&lt;/li&gt;
+&lt;li&gt;还会显示一些违规网站&lt;br&gt;&lt;img data-src=&#34;%5COSINT%5C4.png&#34; alt=&#34; &#34;&gt;&lt;/li&gt;
+&lt;li&gt;还能查看密码是否安全&lt;br&gt;&lt;img data-src=&#34;%5COSINT%5C6.png&#34; alt=&#34; &#34;&gt;&lt;/li&gt;
 &lt;li&gt;还提供了一些API(当然需要$)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;2.&lt;/p&gt;
-&lt;/blockquote&gt;
- ]]></description>
-        </item>
-        <item>
-            <guid isPermalink="true">http://example.com/2023/04/11/Internet%20Security/page/</guid>
-            <title>OSINT</title>
-            <link>http://example.com/2023/04/11/Internet%20Security/page/</link>
-            <category term="网安" scheme="http://example.com/categories/%E7%BD%91%E5%AE%89/" />
-            <category term="信息搜集" scheme="http://example.com/tags/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/" />
-            <pubDate>Tue, 11 Apr 2023 15:39:25 +0800</pubDate>
-            <description><![CDATA[ &lt;h3 id=&#34;1-什么是OSINT&#34;&gt;&lt;a href=&#34;#1-什么是OSINT&#34; class=&#34;headerlink&#34; title=&#34;1.什么是OSINT&#34;&gt;&lt;/a&gt;1.什么是OSINT&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;OSINT（Open-source Intelligence）即开源情报搜集，是用多元化方法进行搜集、分析和通过公开信息进行决策的一种方法。在情报界，Open指的是侵略性、公开的资源.&lt;/p&gt;
+&lt;h4 id=&#34;好用的情报工具&#34;&gt;&lt;a href=&#34;#好用的情报工具&#34; class=&#34;headerlink&#34; title=&#34;好用的情报工具&#34;&gt;&lt;/a&gt;好用的情报工具&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;1.&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cubWFsdGVnby5jb20v&#34;&gt;Maltego&lt;/span&gt;&lt;br&gt;      Maltego一款非常优秀的信息搜索工具，与其他工具相比，不仅功能强大，而且自动化水平非常高，不需要复杂的命令，就能轻松的完成信息收集。该工具可以通过域名注册，搜索引擎，社交网络，电子邮件等各种渠道搜索信息。主要用于是用于开源情报和取证的软件，可以安装在Windows，Linux，MacOS上。在Kali Linux上是默认安装的，只需要一个域名，便可对互联网上的资源自上而下的搜集。&lt;br&gt; &lt;img data-src=&#34;%5COSINT%5C7.png&#34; alt=&#34; &#34;&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;它是一种已被用于国家安全情报活动的方法，其目的是从报纸、新闻、网站和 SNS 等各种信息中预测国家和公司的政策。&lt;/p&gt;
+&lt;p&gt;2.&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly91c2Vyc2VhcmNoLm9yZy8=&#34;&gt;UserSearch&lt;/span&gt;&lt;br&gt;    * UserSearch是一个庞大的用户搜索平台，通过用户名或电子邮件查找某人，可搜索社交网络、约会网站、论坛、加密论坛、聊天网站和博客上。目前已经运行了超过15 年，因此开发人员在用户名或电子邮件地址的OSINT 方面拥有相当强大的地位。开发人员是一个由开源专家和软件开发人员组成的团队。该站点完全免费使用！是迄今为止最全面、最准确的用户名和电子邮件地址在线搜索引擎之一。它还有高级设置，当然也要$.&lt;br&gt; &lt;img data-src=&#34;%5COSINT%5C8.png&#34; alt=&#34; &#34;&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;此外，通过使用 OSINT 收集信息，可以检测泄露的个人信息和机密信息，因此近年来它也被用于防御网络攻击。&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9kb3Jrc2VhcmNoLmNvbS8=&#34;&gt;DorkSearch&lt;/span&gt;&lt;ul&gt;
+&lt;li&gt;这是一项于2022年初创建并向社区发布的免费服务。该工具似乎是exploit-db提供的服务的一种变体，但具有更有用和更广泛的功能。Dorking 基本上是一组可以在Google中使用的半秘密搜索词。使用它们可以显示并非真正打算在Google 中出现的结果！也称为“深网”（不要与暗网/TOR混淆）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
 &lt;/blockquote&gt;
-&lt;h4 id=&#34;个人信息检查&#34;&gt;&lt;a href=&#34;#个人信息检查&#34; class=&#34;headerlink&#34; title=&#34;个人信息检查&#34;&gt;&lt;/a&gt;个人信息检查&lt;/h4&gt;&lt;blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oYXZlaWJlZW5wd25lZC5jb20v&#34;&gt;Have I Been Pwned &lt;/span&gt;&lt;ul&gt;
-&lt;li&gt;只需输入您的电子邮件地址即可检查您的个人信息是否已被泄露&lt;br&gt;&lt;img data-src=&#34;OSINT/1.png&#34; alt=&#34; &#34;&gt;&lt;/li&gt;
-&lt;li&gt;并且当未来发生 pwnage 并且您的帐户被盗用时，您会收到通知。&lt;br&gt;&lt;img data-src=&#34;OSINT/2.png&#34; alt=&#34; &#34;&gt;&lt;/li&gt;
-&lt;li&gt;还能进行域名搜索&lt;br&gt;（在整个域中搜索被盗用的帐户并接收未来的通知）&lt;br&gt; &lt;img data-src=&#34;OSINT/3.png&#34; alt=&#34; &#34;&gt;&lt;/li&gt;
-&lt;li&gt;还会显示一些违规网站&lt;br&gt;&lt;img data-src=&#34;OSINT/4.png&#34; alt=&#34; &#34;&gt;&lt;/li&gt;
-&lt;li&gt;还能查看密码是否安全&lt;br&gt;&lt;img data-src=&#34;config.jpg&#34; alt=&#34; &#34;&gt;&lt;/li&gt;
-&lt;li&gt;还提供了一些API(当然需要$)&lt;/li&gt;
+&lt;pre&gt;&lt;code&gt;  * 开发人员基本上为Dorks创建了一个搜索页面。在下图中，您可以看到它们有一个易于点击的界面。随后它可以让你浏览你感兴趣的内容，然后你只需要点击你想要的。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;  &lt;img data-src=&#34;%5COSINT%5C9.png&#34; alt=&#34; &#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zY2Ftc2VhcmNoLmlvLw==&#34;&gt;ScamSearch&lt;/span&gt;&lt;ul&gt;
+&lt;li&gt;个人诈骗者和诈骗网站的全球数据库。迄今为止，被认为OSINT 最大的社区之一。ScamSearc 是一个庞大的诈骗者众包报告数据库。涉及加密货币诈骗、电子邮件、社交网络、离线诈骗、电话诈骗，几乎所有你能想到的诈骗情况，这个网站都会记录下来并免费提供。目前有大约1000万记录在案的诈骗者，并且每周以数千人的速度增长。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  他们有一个简单的搜索栏，可让在他们的数据库中搜索用户名、电子邮件、加密地址、昵称、真实姓名或网站。鉴于数据库的大小，搜索会很慢，但它是即时的。完全免费的大量诈骗份子数据！由于其众包性质，还鼓励用户使用其服务来举报诈骗者。许多OSINT研究人员和反诈骗社区使用这些数据来瞄准诈骗者并阻碍他们的诈骗工作。
+  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt; &lt;img data-src=&#34;%5COSINT%5C10.png&#34; alt=&#34; &#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;Mitaka(一个扩展程序）&lt;ul&gt;
+&lt;li&gt;这是浏览器中非常方便的一组工具，这可作为Chrome扩展程序使用，也可用于Firefox。它允许在十几个主要搜索引擎中搜索域、URL、IP 地址、MD5 哈希、ASN 和比特币地址。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;2.&lt;/p&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;Spiderfoot&lt;br&gt;[下载地址]（&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3NtaWNhbGxlZi9zcGlkZXJmb290P3JlZj1kJUVGJUJDJTg5&#34;&gt;https://github.com/smicallef/spiderfoot?ref=d）&lt;/span&gt;&lt;/li&gt;
+&lt;/ol&gt;
 &lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt; * 这是一个免费的侦察工具，可自动查询 100 多个公共数据源 (OSINT)，以收集有关IP地址、域名、电子邮件地址、姓名等的情报信息。只需指定要调查的目标，选择要启用的模块，然后 SpiderFoot 将收集数据以了解所有实体以及它们之间的关系。扫描返回的数据将揭示有关目标的大量信息，从而深入了解可能的数据泄漏、漏洞或其他敏感信息，这些信息可在渗透测试、红队演习或威胁情报中被利用。
+&lt;/code&gt;&lt;/pre&gt;
  ]]></description>
         </item>
         <item>

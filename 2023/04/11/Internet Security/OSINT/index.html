@@ -76,7 +76,7 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
       <i class="ic i-pen"></i>
     </span>
     <span class="text">本文字数</span>
-    <span>276</span>
+    <span>1.3k</span>
     <span class="text">字</span>
   </span>
   <span class="item" title="阅读时长">
@@ -84,7 +84,7 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
       <i class="ic i-clock"></i>
     </span>
     <span class="text">阅读时长</span>
-    <span>1 分钟</span>
+    <span>5 分钟</span>
   </span>
 </div>
 
@@ -116,14 +116,7 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
 
       </div>
       <div id="imgs" class="pjax">
-        <ul>
-          <li class="item" data-background-image="https://acg.xydwz.cn/api/api.php?274230"></li>
-          <li class="item" data-background-image="https://acg.xydwz.cn/api/api.php?378756"></li>
-          <li class="item" data-background-image="https://acg.xydwz.cn/api/api.php?126917"></li>
-          <li class="item" data-background-image="https://acg.xydwz.cn/api/api.php?591217"></li>
-          <li class="item" data-background-image="https://acg.xydwz.cn/api/api.php?966947"></li>
-          <li class="item" data-background-image="https://acg.xydwz.cn/api/api.php?521308"></li>
-        </ul>
+          <img src="https://i.ibb.co/HGyd2qY/f1.jpg">
       </div>
     </header>
     <div id="waves">
@@ -167,6 +160,9 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
 
   <div class="body md" itemprop="articleBody">
     
+      <div class="gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          <img data-src="https://i.ibb.co/HGyd2qY/f1.jpg" itemprop="contentUrl">
+      </div>
 
     <h3 id="1-什么是OSINT"><a href="#1-什么是OSINT" class="headerlink" title="1.什么是OSINT"></a>1.什么是OSINT</h3><blockquote>
 <p>OSINT（Open-source Intelligence）即开源情报搜集，是用多元化方法进行搜集、分析和通过公开信息进行决策的一种方法。在情报界，Open指的是侵略性、公开的资源.</p>
@@ -180,19 +176,60 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
 <h4 id="个人信息检查"><a href="#个人信息检查" class="headerlink" title="个人信息检查"></a>个人信息检查</h4><blockquote>
 <ol>
 <li><span class="exturl" data-url="aHR0cHM6Ly9oYXZlaWJlZW5wd25lZC5jb20v">Have I Been Pwned </span><ul>
-<li>只需输入您的电子邮件地址即可检查您的个人信息是否已被泄露<br><img data-src="OSINT/1.png" alt=" "></li>
-<li>并且当未来发生 pwnage 并且您的帐户被盗用时，您会收到通知。<br><img data-src="OSINT/2.png" alt=" "></li>
-<li>还能进行域名搜索<br>（在整个域中搜索被盗用的帐户并接收未来的通知）<br> <img data-src="OSINT/3.png" alt=" "></li>
-<li>还会显示一些违规网站<br><img data-src="OSINT/4.png" alt=" "></li>
-<li>还能查看密码是否安全<br><img data-src="config.jpg" alt=" "></li>
+<li>只需输入您的电子邮件地址即可检查您的个人信息是否已被泄露<br><img data-src="%5COSINT%5C1.png" alt=" "></li>
+<li>并且当未来发生 pwnage 并且您的帐户被盗用时，您会收到通知。<br><img data-src="%5COSINT%5C2.png" alt=" "></li>
+<li>还能进行域名搜索<br>（在整个域中搜索被盗用的帐户并接收未来的通知）<br> <img data-src="%5COSINT%5C3.png" alt=" "></li>
+<li>还会显示一些违规网站<br><img data-src="%5COSINT%5C4.png" alt=" "></li>
+<li>还能查看密码是否安全<br><img data-src="%5COSINT%5C6.png" alt=" "></li>
 <li>还提供了一些API(当然需要$)</li>
 </ul>
 </li>
 </ol>
 </blockquote>
-<blockquote>
-<p>2.</p>
+<h4 id="好用的情报工具"><a href="#好用的情报工具" class="headerlink" title="好用的情报工具"></a>好用的情报工具</h4><blockquote>
+<p>1.<span class="exturl" data-url="aHR0cHM6Ly93d3cubWFsdGVnby5jb20v">Maltego</span><br>      Maltego一款非常优秀的信息搜索工具，与其他工具相比，不仅功能强大，而且自动化水平非常高，不需要复杂的命令，就能轻松的完成信息收集。该工具可以通过域名注册，搜索引擎，社交网络，电子邮件等各种渠道搜索信息。主要用于是用于开源情报和取证的软件，可以安装在Windows，Linux，MacOS上。在Kali Linux上是默认安装的，只需要一个域名，便可对互联网上的资源自上而下的搜集。<br> <img data-src="%5COSINT%5C7.png" alt=" "></p>
 </blockquote>
+<blockquote>
+<p>2.<span class="exturl" data-url="aHR0cHM6Ly91c2Vyc2VhcmNoLm9yZy8=">UserSearch</span><br>    * UserSearch是一个庞大的用户搜索平台，通过用户名或电子邮件查找某人，可搜索社交网络、约会网站、论坛、加密论坛、聊天网站和博客上。目前已经运行了超过15 年，因此开发人员在用户名或电子邮件地址的OSINT 方面拥有相当强大的地位。开发人员是一个由开源专家和软件开发人员组成的团队。该站点完全免费使用！是迄今为止最全面、最准确的用户名和电子邮件地址在线搜索引擎之一。它还有高级设置，当然也要$.<br> <img data-src="%5COSINT%5C8.png" alt=" "></p>
+</blockquote>
+<blockquote>
+<ol start="3">
+<li><span class="exturl" data-url="aHR0cHM6Ly9kb3Jrc2VhcmNoLmNvbS8=">DorkSearch</span><ul>
+<li>这是一项于2022年初创建并向社区发布的免费服务。该工具似乎是exploit-db提供的服务的一种变体，但具有更有用和更广泛的功能。Dorking 基本上是一组可以在Google中使用的半秘密搜索词。使用它们可以显示并非真正打算在Google 中出现的结果！也称为“深网”（不要与暗网/TOR混淆）。</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<pre><code>  * 开发人员基本上为Dorks创建了一个搜索页面。在下图中，您可以看到它们有一个易于点击的界面。随后它可以让你浏览你感兴趣的内容，然后你只需要点击你想要的。
+</code></pre>
+<p>  <img data-src="%5COSINT%5C9.png" alt=" "></p>
+<blockquote>
+<ol start="4">
+<li><span class="exturl" data-url="aHR0cHM6Ly9zY2Ftc2VhcmNoLmlvLw==">ScamSearch</span><ul>
+<li>个人诈骗者和诈骗网站的全球数据库。迄今为止，被认为OSINT 最大的社区之一。ScamSearc 是一个庞大的诈骗者众包报告数据库。涉及加密货币诈骗、电子邮件、社交网络、离线诈骗、电话诈骗，几乎所有你能想到的诈骗情况，这个网站都会记录下来并免费提供。目前有大约1000万记录在案的诈骗者，并且每周以数千人的速度增长。</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<pre><code>  他们有一个简单的搜索栏，可让在他们的数据库中搜索用户名、电子邮件、加密地址、昵称、真实姓名或网站。鉴于数据库的大小，搜索会很慢，但它是即时的。完全免费的大量诈骗份子数据！由于其众包性质，还鼓励用户使用其服务来举报诈骗者。许多OSINT研究人员和反诈骗社区使用这些数据来瞄准诈骗者并阻碍他们的诈骗工作。
+  
+</code></pre>
+<p> <img data-src="%5COSINT%5C10.png" alt=" "></p>
+<blockquote>
+<ol start="5">
+<li>Mitaka(一个扩展程序）<ul>
+<li>这是浏览器中非常方便的一组工具，这可作为Chrome扩展程序使用，也可用于Firefox。它允许在十几个主要搜索引擎中搜索域、URL、IP 地址、MD5 哈希、ASN 和比特币地址。</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="6">
+<li>Spiderfoot<br>[下载地址]（<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NtaWNhbGxlZi9zcGlkZXJmb290P3JlZj1kJUVGJUJDJTg5">https://github.com/smicallef/spiderfoot?ref=d）</span></li>
+</ol>
+</blockquote>
+<pre><code> * 这是一个免费的侦察工具，可自动查询 100 多个公共数据源 (OSINT)，以收集有关IP地址、域名、电子邮件地址、姓名等的情报信息。只需指定要调查的目标，选择要启用的模块，然后 SpiderFoot 将收集数据以了解所有实体以及它们之间的关系。扫描返回的数据将揭示有关目标的大量信息，从而深入了解可能的数据泄漏、漏洞或其他敏感信息，这些信息可在渗透测试、红队演习或威胁情报中被利用。
+</code></pre>
 
       <div class="tags">
           <a href="/tags/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/" rel="tag"><i class="ic i-tag"></i> 信息搜集</a>
@@ -207,7 +244,7 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">更新于</span>
-    <time title="修改时间：2023-04-11 16:58:50" itemprop="dateModified" datetime="2023-04-11T16:58:50+08:00">2023-04-11</time>
+    <time title="修改时间：2023-04-11 21:18:22" itemprop="dateModified" datetime="2023-04-11T21:18:22+08:00">2023-04-11</time>
   </span>
 </div>
 
@@ -262,10 +299,10 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
     <div class="item left">
       
 
-  <a href="/2023/04/11/Internet%20Security/page/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;acg.xydwz.cn&#x2F;api&#x2F;api.php?795898" title="OSINT">
+  <a href="/2023/04/10/Internet%20Security/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;acg.xydwz.cn&#x2F;api&#x2F;api.php?691361" title="信息搜集">
   <span class="type">上一篇</span>
   <span class="category"><i class="ic i-flag"></i> 网安</span>
-  <h3>OSINT</h3>
+  <h3>信息搜集</h3>
   </a>
 
     </div>
@@ -286,11 +323,11 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="文章目录">
-          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AFOSINT"><span class="toc-number">1.</span> <span class="toc-text">1.什么是OSINT</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF%E6%A3%80%E6%9F%A5"><span class="toc-number">1.1.</span> <span class="toc-text">个人信息检查</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AFOSINT"><span class="toc-number">1.</span> <span class="toc-text">1.什么是OSINT</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF%E6%A3%80%E6%9F%A5"><span class="toc-number">1.1.</span> <span class="toc-text">个人信息检查</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A5%BD%E7%94%A8%E7%9A%84%E6%83%85%E6%8A%A5%E5%B7%A5%E5%85%B7"><span class="toc-number">1.2.</span> <span class="toc-text">好用的情报工具</span></a></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="系列文章">
         <ul>
-          <li><a href="/2023/04/09/Internet%20Security/hello-world/" rel="bookmark" title="SQL注入">SQL注入</a></li><li><a href="/2023/04/10/Internet%20Security/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/" rel="bookmark" title="信息搜集">信息搜集</a></li><li class="active"><a href="/2023/04/11/Internet%20Security/OSINT/" rel="bookmark" title="OSINT">OSINT</a></li><li><a href="/2023/04/11/Internet%20Security/page/" rel="bookmark" title="OSINT">OSINT</a></li>
+          <li><a href="/2023/04/09/Internet%20Security/hello-world/" rel="bookmark" title="SQL注入">SQL注入</a></li><li><a href="/2023/04/10/Internet%20Security/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/" rel="bookmark" title="信息搜集">信息搜集</a></li><li class="active"><a href="/2023/04/11/Internet%20Security/OSINT/" rel="bookmark" title="OSINT">OSINT</a></li>
         </ul>
       </div>
       <div class="overview panel" data-title="站点概览">
@@ -304,7 +341,7 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">4</span>
+        <span class="count">3</span>
         <span class="name">文章</span>
       </a>
     </div>
@@ -412,7 +449,7 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
 <a href="/categories/%E7%BD%91%E5%AE%89/" title="分类于 网安">网安</a>
 </div>
 
-    <span><a href="/2023/04/09/Internet%20Security/hello-world/" title="SQL注入">SQL注入</a></span>
+    <span><a href="/2023/04/11/Internet%20Security/OSINT/" title="OSINT">OSINT</a></span>
   </li>
 
       
@@ -432,17 +469,7 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
 <a href="/categories/%E7%BD%91%E5%AE%89/" title="分类于 网安">网安</a>
 </div>
 
-    <span><a href="/2023/04/11/Internet%20Security/page/" title="OSINT">OSINT</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E7%BD%91%E5%AE%89/" title="分类于 网安">网安</a>
-</div>
-
-    <span><a href="/2023/04/11/Internet%20Security/OSINT/" title="OSINT">OSINT</a></span>
+    <span><a href="/2023/04/09/Internet%20Security/hello-world/" title="SQL注入">SQL注入</a></span>
   </li>
 
   </ul>
@@ -467,13 +494,13 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="站点总字数">3k 字</span>
+    <span title="站点总字数">4k 字</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="站点阅读时长">11 分钟</span>
+    <span title="站点阅读时长">13 分钟</span>
   </div>
   <div class="powered-by">
     基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
