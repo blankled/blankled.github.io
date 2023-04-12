@@ -76,7 +76,7 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
       <i class="ic i-pen"></i>
     </span>
     <span class="text">本文字数</span>
-    <span>1.3k</span>
+    <span>1.9k</span>
     <span class="text">字</span>
   </span>
   <span class="item" title="阅读时长">
@@ -84,7 +84,7 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
       <i class="ic i-clock"></i>
     </span>
     <span class="text">阅读时长</span>
-    <span>5 分钟</span>
+    <span>7 分钟</span>
   </span>
 </div>
 
@@ -225,11 +225,79 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
 </blockquote>
 <blockquote>
 <ol start="6">
-<li>Spiderfoot<br>[下载地址]（<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NtaWNhbGxlZi9zcGlkZXJmb290P3JlZj1kJUVGJUJDJTg5">https://github.com/smicallef/spiderfoot?ref=d）</span></li>
+<li>Spiderfoot<br>[下载地址]（<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NtaWNhbGxlZi9zcGlkZXJmb290P3JlZj1kJUVGJUJDJTg5">https://github.com/smicallef/spiderfoot?ref=d）</span><br><img data-src="11.png" alt=" "><img data-src="12.png" alt=" "><ul>
+<li>这是一个免费的侦察工具，可自动查询 100 多个公共数据源 (OSINT)，以收集有关IP地址、域名、电子邮件地址、姓名等的情报信息。只需指定要调查的目标，选择要启用的模块，然后 SpiderFoot 将收集数据以了解所有实体以及它们之间的关系。扫描返回的数据将揭示有关目标的大量信息，从而深入了解可能的数据泄漏、漏洞或其他敏感信息，这些信息可在渗透测试、红队演习或威胁情报中被利用。</li>
+<li>还可以在 SpiderFoot 扫描中定位以下实体：<ul>
+<li>IP地址</li>
+<li>域名/子域名</li>
+<li>主机名</li>
+<li>网络子网 (CIDR)</li>
+<li>ASN</li>
+<li>电子邮件地址</li>
+<li>电话号码</li>
+<li>用户名</li>
+<li>人名</li>
+<li>比特币地址</li>
+</ul>
+</li>
+</ul>
+</li>
 </ol>
 </blockquote>
-<pre><code> * 这是一个免费的侦察工具，可自动查询 100 多个公共数据源 (OSINT)，以收集有关IP地址、域名、电子邮件地址、姓名等的情报信息。只需指定要调查的目标，选择要启用的模块，然后 SpiderFoot 将收集数据以了解所有实体以及它们之间的关系。扫描返回的数据将揭示有关目标的大量信息，从而深入了解可能的数据泄漏、漏洞或其他敏感信息，这些信息可在渗透测试、红队演习或威胁情报中被利用。
+<blockquote>
+<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><p>稳定构建（打包发布）：</p>
+</blockquote>
+<pre><code class="cmd">wget https://github.com/smicallef/spiderfoot/archive/v4.0.tar.gz
+tar zxvf v4.0.tar.gz
+cd spiderfoot-4.0
+pip install -r requirements.txt
+python ./sf.py -l 127.0.0.1:5001
 </code></pre>
+<blockquote>
+<p>开发构建（克隆 git master 分支）：</p>
+</blockquote>
+<pre><code class="cmd"> git clone https://github.com/smicallef/spiderfoot.git
+ cd spiderfoot
+ pip install -r requirements.txt
+ python ./sf.py -l 127.0.0.1:5001
+</code></pre>
+<blockquote>
+<ol start="7">
+<li><span class="exturl" data-url="aHR0cHM6Ly9idWlsdHdpdGguY29tLw==">BuiltWith</span></li>
+</ol>
+</blockquote>
+<ul>
+<li>查找构建网站的工具！<br><img data-src="13.png" alt=" "></li>
+<li>Builtiwth，定位于是一个网站分析工具、竞争对手情报工具和网站优化工具，可以分析网站使用了哪些技术堆栈。例如，它可以检测网站是否是使用WordPress、Joomla或任何其他类似CMS 的平台构建的。它还将生成网站当前正在使用的插件、其框架甚至是公开可用的服务器信息的服务列表。可以将此工具与安全扫描程序（例如 WPScan）和 WordPress 漏洞数据库 API 链接。这可以快速发现正在使用的 WordPress 模块中的常见漏洞。这个分析工具除开技术方面的分析，对于商业品牌而言，分析竞手方面也是不错的应用。</li>
+</ul>
+<blockquote>
+<ol start="8">
+<li><span class="exturl" data-url="aHR0cHM6Ly9vc2ludGZyYW1ld29yay5jb20v">OSINT Framework Resource</span></li>
+</ol>
+</blockquote>
+<ul>
+<li>OSINT 框架专注于从免费工具或资源中收集信息。目的是帮助人们找到免费的 OSINT 资源。包含的某些站点可能需要注册或以 $$$ 的价格提供更多数据，但您应该能够免费获得至少一部分可用信息。<br><img data-src="14.png" alt=" "></li>
+</ul>
+<blockquote>
+<ol start="9">
+<li>OneforAll<br><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NobWlseWx0eS9PbmVGb3JBbGw=">摘自</span><br>一款强大的子域收集工具</li>
+<li>基于python 3.6.0及以上版本,cmd中查看<br><code>pyton -V</code><br>这里我们用git来下载[GIT安装]（<span class="exturl" data-url="aHR0cHM6Ly9naXQtc2NtLmNvbS9ib29rL3poL3YyLyVFOCVCNSVCNyVFNiVBRCVBNS0lRTUlQUUlODklRTglQTMlODUtR2l0JUVGJUJDJTg5">https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git）</span><br><code>git clone https://gitee.com/shmilylty/OneForAll.git 或git clone https://github.com/shmilylty/OneForAll.git</code></li>
+</ol>
+</blockquote>
+<ul>
+<li>安装<ul>
+<li>1.0cmd中输入<br><code>cd OneforAll</code></li>
+<li>2.0安装依赖<br><code>python -m pip install -U pip setuptools wheel -i https://mirrors.aliyun.com/pypi/simple/ pip3 install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/ </code></li>
+<li>3.0更新<br><code>git stash        # 暂存本地的修改 git fetch --all  # 拉取项目更新 git pull         # 下载覆盖 git stash pop    # 释放本地修改</code><blockquote>
+<p>演示<br>我这边是用example.com来演示的,大家可以换成其他域名<br><code>python oneforall.py --target example.com run 或 python oneforall.py --targets ./example.txt run</code></p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>运行后就是这样的了<br><img data-src="15.png" alt=" "></li>
+<li>之后找到OneforAll文件夹中的results<br><img data-src="16.png" alt=" "></li>
+<li>打开<br><a href="18.png"> </a><br><img data-src="17.png" alt=" "></li>
+</ul>
 
       <div class="tags">
           <a href="/tags/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/" rel="tag"><i class="ic i-tag"></i> 信息搜集</a>
@@ -244,7 +312,7 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">更新于</span>
-    <time title="修改时间：2023-04-11 21:53:01" itemprop="dateModified" datetime="2023-04-11T21:53:01+08:00">2023-04-11</time>
+    <time title="修改时间：2023-04-12 15:38:33" itemprop="dateModified" datetime="2023-04-12T15:38:33+08:00">2023-04-12</time>
   </span>
 </div>
 
@@ -299,7 +367,7 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
     <div class="item left">
       
 
-  <a href="/2023/04/10/Internet%20Security/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;acg.xydwz.cn&#x2F;api&#x2F;api.php?586473" title="信息搜集">
+  <a href="/2023/04/10/Internet%20Security/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;acg.xydwz.cn&#x2F;api&#x2F;api.php?227474" title="信息搜集">
   <span class="type">上一篇</span>
   <span class="category"><i class="ic i-flag"></i> 网安</span>
   <h3>信息搜集</h3>
@@ -323,7 +391,7 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="文章目录">
-          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AFOSINT"><span class="toc-number">1.</span> <span class="toc-text">1.什么是OSINT</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF%E6%A3%80%E6%9F%A5"><span class="toc-number">1.1.</span> <span class="toc-text">个人信息检查</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A5%BD%E7%94%A8%E7%9A%84%E6%83%85%E6%8A%A5%E5%B7%A5%E5%85%B7"><span class="toc-number">1.2.</span> <span class="toc-text">好用的情报工具</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AFOSINT"><span class="toc-number">1.</span> <span class="toc-text">1.什么是OSINT</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF%E6%A3%80%E6%9F%A5"><span class="toc-number">1.1.</span> <span class="toc-text">个人信息检查</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A5%BD%E7%94%A8%E7%9A%84%E6%83%85%E6%8A%A5%E5%B7%A5%E5%85%B7"><span class="toc-number">1.2.</span> <span class="toc-text">好用的情报工具</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.1.</span> <span class="toc-text">安装</span></a></li></ol></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="系列文章">
         <ul>
@@ -449,16 +517,6 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
 <a href="/categories/%E7%BD%91%E5%AE%89/" title="分类于 网安">网安</a>
 </div>
 
-    <span><a href="/2023/04/09/Internet%20Security/hello-world/" title="SQL注入">SQL注入</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E7%BD%91%E5%AE%89/" title="分类于 网安">网安</a>
-</div>
-
     <span><a href="/2023/04/10/Internet%20Security/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/" title="信息搜集">信息搜集</a></span>
   </li>
 
@@ -470,6 +528,16 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
 </div>
 
     <span><a href="/2023/04/11/Internet%20Security/OSINT/" title="OSINT">OSINT</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E7%BD%91%E5%AE%89/" title="分类于 网安">网安</a>
+</div>
+
+    <span><a href="/2023/04/09/Internet%20Security/hello-world/" title="SQL注入">SQL注入</a></span>
   </li>
 
   </ul>
@@ -500,7 +568,7 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="站点阅读时长">13 分钟</span>
+    <span title="站点阅读时长">16 分钟</span>
   </div>
   <div class="powered-by">
     基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
