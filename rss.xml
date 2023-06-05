@@ -10,8 +10,74 @@
         </author>
         <description>繁星不怕被看作流萤</description>
         <language>zh-CN</language>
-        <pubDate>Wed, 12 Apr 2023 21:27:07 +0800</pubDate>
-        <lastBuildDate>Wed, 12 Apr 2023 21:27:07 +0800</lastBuildDate>
+        <pubDate>Wed, 12 Apr 2023 21:37:50 +0800</pubDate>
+        <lastBuildDate>Wed, 12 Apr 2023 21:37:50 +0800</lastBuildDate>
+        <item>
+            <guid isPermalink="true">http://example.com/2023/04/12/Internet%20Security/cdn/</guid>
+            <title>cdn</title>
+            <link>http://example.com/2023/04/12/Internet%20Security/cdn/</link>
+            <category term="网安" scheme="http://example.com/categories/%E7%BD%91%E5%AE%89/" />
+            <category term="信息搜集" scheme="http://example.com/tags/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/" />
+            <pubDate>Wed, 12 Apr 2023 21:37:50 +0800</pubDate>
+            <description><![CDATA[ &lt;h2 id=&#34;CDN介绍&#34;&gt;&lt;a href=&#34;#CDN介绍&#34; class=&#34;headerlink&#34; title=&#34;CDN介绍&#34;&gt;&lt;/a&gt;CDN介绍&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;CDN 的全称是 Content Delivery Network，即内容分发网络。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;CDN 是构建在现有网络基础之上的智能虚拟网络，依靠部署在各地的边缘服务器，通过中心平台的负载均衡、内容分发、调度等功能模块，使用户就近获取所需内容，降低网络拥塞，提高用户访问响应速度和命中率。&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;多点Ping&#34;&gt;&lt;a href=&#34;#多点Ping&#34; class=&#34;headerlink&#34; title=&#34;多点Ping&#34;&gt;&lt;/a&gt;多点Ping&lt;/h2&gt;&lt;p&gt;多地ping网址&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;plain&#34;&gt;https://ping.chinaz.com/
+https://asm.ca.com/en/ping.php        ####可能访问不了####
+http://host-tracker.com/
+http://www.webpagetest.org/
+https://dnscheck.pingdom.com/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;选择偏远IP代理池，某些代理网站&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;plain&#34;&gt;https://www.zmhttp.com/
+https://www.abuyun.com/
+https://www.daxiangdaili.com/
+https://www.tyhttp.com/
+http://www.ip3366.net/
+https://ip.zdaye.com/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id&gt;&lt;a href=&#34;#&#34; class=&#34;headerlink&#34; title&gt;&lt;/a&gt;&lt;img data-src=&#34;https://cdn.nlark.com/yuque/0/2022/png/23199109/1664758949789-a1bfb9a1-f7bf-40b1-b56d-6f3daf287d5c.png&#34;&gt;&lt;/h2&gt;&lt;h2 id=&#34;证书查IP&#34;&gt;&lt;a href=&#34;#证书查IP&#34; class=&#34;headerlink&#34; title=&#34;证书查IP&#34;&gt;&lt;/a&gt;证书查IP&lt;/h2&gt;&lt;p&gt;SSL证书搜索引擎&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;plain&#34;&gt;https://censys.io/ipv4?q=github.comCensys 
+https://crt.sh 搜集证书的网站
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;邮箱查CDN&#34;&gt;&lt;a href=&#34;#邮箱查CDN&#34; class=&#34;headerlink&#34; title=&#34;邮箱查CDN&#34;&gt;&lt;/a&gt;邮箱查CDN&lt;/h2&gt;&lt;p&gt;Web 跟 Email 服务属同服务器的情况下可以通过 Email 来查询目标真实 IP 地址&lt;/p&gt;
+&lt;p&gt;但如果 Web 跟 Email 属不同服务器，那么我们通过 Email 得到的可能只是邮件服务器的 IP 地址，所以在 hosts 文件中即使绑定 IP 后无法访问目标网站也属正常现象。&lt;/p&gt;
+&lt;p&gt;常见发送邮件的功能有：注册用户、找回密码等等。&lt;/p&gt;
+&lt;h2 id=&#34;PHPinfo查CDN&#34;&gt;&lt;a href=&#34;#PHPinfo查CDN&#34; class=&#34;headerlink&#34; title=&#34;PHPinfo查CDN&#34;&gt;&lt;/a&gt;PHPinfo查CDN&lt;/h2&gt;&lt;p&gt;&lt;img data-src=&#34;https://cdn.nlark.com/yuque/0/2022/png/23199109/1664759150574-6b9aac44-6e74-4688-8d8a-21d0f3e5c4fc.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;网络安全引擎搜索&#34;&gt;&lt;a href=&#34;#网络安全引擎搜索&#34; class=&#34;headerlink&#34; title=&#34;网络安全引擎搜索&#34;&gt;&lt;/a&gt;网络安全引擎搜索&lt;/h2&gt;&lt;pre&gt;&lt;code class=&#34;plain&#34;&gt;https://www.zoomeye.org
+https://www.shodan.io
+https://fofa.so
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;子域名查CDN&#34;&gt;&lt;a href=&#34;#子域名查CDN&#34; class=&#34;headerlink&#34; title=&#34;子域名查CDN&#34;&gt;&lt;/a&gt;子域名查CDN&lt;/h2&gt;&lt;p&gt;大部分 CDN 服务都是按流量进行收费的，所以一些网站管理员只给重要业务部署 CDN，也有很多人忘了给 “根域” 部署 CDN。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;plain&#34;&gt;http://tool.chinaz.com/subdomain/
+http://i.links.cn/subdomain/    
+http://subdomain.chaxun.la/
+http://searchdns.netcraft.com/
+https://www.virustotal.com/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;部分子域名爆破工具&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;plain&#34;&gt;wydomain：https://github.com/ring04h/wydomain    
+subDomainsBrute:https://github.com/lijiejie/
+Sublist3r:https://github.com/aboul3la/Sublist3r
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;历史解析记录查IP-老域名查询&#34;&gt;&lt;a href=&#34;#历史解析记录查IP-老域名查询&#34; class=&#34;headerlink&#34; title=&#34;历史解析记录查IP/老域名查询&#34;&gt;&lt;/a&gt;历史解析记录查IP/老域名查询&lt;/h2&gt;&lt;pre&gt;&lt;code class=&#34;plain&#34;&gt;https://x.threatbook.cn 
+https://webiplookup.com 
+https://viewdns.info/iphistory 
+https://securitytrails.com/#search 
+https://toolbar.netcraft.com/site_report
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;配置不当导致解析绕过&#34;&gt;&lt;a href=&#34;#配置不当导致解析绕过&#34; class=&#34;headerlink&#34; title=&#34;配置不当导致解析绕过&#34;&gt;&lt;/a&gt;配置不当导致解析绕过&lt;/h2&gt;&lt;p&gt;例如网站同时支持HTTP,HTTPS但是CDN只防御了一个&lt;/p&gt;
+&lt;p&gt;如果网站同时支持&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3d3dy50ZXN0LmNvbeWSjHRlc3QuY29t6YKj5LmI5pyJ5Y+v6IO95Y+q6Ziy5b6h5LiA5LiqLw==&#34;&gt;www.test.com和test.com那么有可能只防御一个&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;网站如果开了不值80端口，那么有可能有的端口没有CDN防御&lt;/p&gt;
+&lt;h2 id=&#34;全网扫描&#34;&gt;&lt;a href=&#34;#全网扫描&#34; class=&#34;headerlink&#34; title=&#34;全网扫描&#34;&gt;&lt;/a&gt;全网扫描&lt;/h2&gt;&lt;p&gt;对全网ip扫描，通过一些关键字过滤来发现真实ip的解析&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;plain&#34;&gt;https://github.com/zmap/zmap
+https://github.com/robertdavidgraham/masscan
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;奇怪特定网站绕过的方法&#34;&gt;&lt;a href=&#34;#奇怪特定网站绕过的方法&#34; class=&#34;headerlink&#34; title=&#34;奇怪特定网站绕过的方法&#34;&gt;&lt;/a&gt;奇怪特定网站绕过的方法&lt;/h2&gt;&lt;p&gt;1）对于小网站可以尝试，先利用DDOS攻击消耗流量，让其回滚到真实ip&lt;/p&gt;
+&lt;p&gt;相关博客文章&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmRldGVjdGlmeS5jb20vMjAxOS8wNy8zMS9ieXBhc3NpbmctY2xvdWRmbGFyZS13YWYtd2l0aC10aGUtb3JpZ2luLXNlcnZlci1pcC1hZGRyZXNzLw==&#34;&gt;https://blog.detectify.com/2019/07/31/bypassing-cloudflare-waf-with-the-origin-server-ip-address/&lt;/span&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://example.com/2023/04/12/Internet%20Security/XSS/</guid>
             <title>XSS</title>
@@ -418,24 +484,21 @@ python oneforall.py --targets ./example.txt run
             <category term="网安" scheme="http://example.com/categories/%E7%BD%91%E5%AE%89/" />
             <category term="信息搜集" scheme="http://example.com/tags/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/" />
             <pubDate>Mon, 10 Apr 2023 19:08:20 +0800</pubDate>
-            <description><![CDATA[ &lt;h2 id=&#34;web&#34;&gt;&lt;a href=&#34;#web&#34; class=&#34;headerlink&#34; title=&#34;web&#34;&gt;&lt;/a&gt;web&lt;/h2&gt;&lt;h3 id=&#34;cdn获取真实ip&#34;&gt;&lt;a href=&#34;#cdn获取真实ip&#34; class=&#34;headerlink&#34; title=&#34;cdn获取真实ip&#34;&gt;&lt;/a&gt;cdn获取真实ip&lt;/h3&gt;&lt;ul&gt;
+            <description><![CDATA[ &lt;h2 id=&#34;web&#34;&gt;&lt;a href=&#34;#web&#34; class=&#34;headerlink&#34; title=&#34;web&#34;&gt;&lt;/a&gt;web&lt;/h2&gt;&lt;p&gt;&lt;a name=&#34;b&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;cdn获取真实ip&#34;&gt;&lt;a href=&#34;#cdn获取真实ip&#34; class=&#34;headerlink&#34; title=&#34;cdn获取真实ip&#34;&gt;&lt;/a&gt;cdn获取真实ip&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;方法一：&lt;br&gt;从全球各地去ping他的服务器（万一在一些穷乡僻壤的地方ping到了呢）&lt;/li&gt;
 &lt;li&gt;方法二：&lt;br&gt;使用邮件订阅或RSS订阅的一种形式（大部分cdn不会防御件订阅或RSS订阅的东西）&lt;/li&gt;
 &lt;li&gt;方法三：&lt;br&gt;ping二级域名（有些网站的二级域名可能不会做cdn）&lt;/li&gt;
 &lt;li&gt;方法四：&lt;br&gt;用nslookup&lt;/li&gt;
 &lt;li&gt;方法五：&lt;br&gt;查找一下域名的历史解析记录，毕竟域名再用cdn之前可能是用真实的ip&lt;/li&gt;
-&lt;li&gt;F6：&lt;br&gt;phpinfo上可能显示他的真实ip&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;域名–渗透&#34;&gt;&lt;a href=&#34;#域名–渗透&#34; class=&#34;headerlink&#34; title=&#34;域名–渗透&#34;&gt;&lt;/a&gt;域名–渗透&lt;/h3&gt;&lt;blockquote&gt;
+&lt;li&gt;方法6：&lt;br&gt;phpinfo上可能显示他的真实ip&lt;br&gt;&lt;a name=&#34;b&#34;&gt;&lt;/a&gt;&lt;h3 id=&#34;域名–渗透&#34;&gt;&lt;a href=&#34;#域名–渗透&#34; class=&#34;headerlink&#34; title=&#34;域名–渗透&#34;&gt;&lt;/a&gt;域名–渗透&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;1.确定站点是否是主站&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;如果是，先进行子域名的挖掘，然后从子域名入手，确定一下使用了什么服务器（中间件），查看一下他的CMS，用什么编程语言，大概使用了什么数据库，有没有使用cdn，如果有cdn，则需要搜集一下网站的真实ip，然后看一下网站的源代码是不是存在着信息泄露，有时还可以进一步对网站进行信息搜集，比如：whois查询，ip访查，使用google进行查询（黑客引擎进行敏感信息的搜集），查看目标的功能模块有没有文件上传，sql注入，xss等等漏洞。&lt;/p&gt;
+&lt;p&gt;如果是，先进行子域名的挖掘，然后从子域名入手，确定一下使用了什么服务器（中间件），查看一下他的CMS，用什么编程语言，大概使用了什么数据库，有没有使用cdn，如果有cdn，则需要搜集一下网站的真实ip，然后看一下网站的源代码是不是存在着信息泄露，有时还可以进一步对网站进行信息搜集，比如：whois查询，ip反查，使用google进行查询（黑客引擎进行敏感信息的搜集），查看目标的功能模块有没有文件上传，sql注入，xss等等漏洞。&lt;br&gt;&lt;a name=&#34;b&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/blockquote&gt;
-&lt;h3 id=&#34;扫描问题&#34;&gt;&lt;a href=&#34;#扫描问题&#34; class=&#34;headerlink&#34; title=&#34;扫描问题&#34;&gt;&lt;/a&gt;扫描问题&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;Mysql 只扫到了80端口&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
+&lt;h3 id=&#34;扫描问题&#34;&gt;&lt;a href=&#34;#扫描问题&#34; class=&#34;headerlink&#34; title=&#34;扫描问题&#34;&gt;&lt;/a&gt;扫描问题&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;Mysql 只扫到了80端口&lt;br&gt;&lt;a name=&#34;b&#34;&gt;&lt;/a&gt;&lt;blockquote&gt;
 &lt;ol&gt;
 &lt;li&gt;可能将Mysql端口改了&lt;/li&gt;
 &lt;li&gt;也可能是站库分离&lt;/li&gt;
@@ -449,15 +512,16 @@ python oneforall.py --targets ./example.txt run
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;搜集目标网站注册人的信息&#34;&gt;&lt;a href=&#34;#搜集目标网站注册人的信息&#34; class=&#34;headerlink&#34; title=&#34;搜集目标网站注册人的信息&#34;&gt;&lt;/a&gt;搜集目标网站注册人的信息&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;考虑用telegram上的一些社工库，看一下有没有他泄露的一些密码，尝试使用其泄露的密码去登录网站的后台。&lt;/li&gt;
 &lt;li&gt;搜索引擎搜索邮箱关键词，看看他有没有在网上发布一些言论。&lt;/li&gt;
 &lt;li&gt;利用搜索到的一些关联信息去找出其他的关联信息（邮箱，账号等等）与其聊天，套取一些信息。&lt;/li&gt;
 &lt;li&gt;用社会工程学的方法去找到他的一些社交帐号（可能会在里面找到管理员设置密码的一些习惯）。&lt;/li&gt;
 &lt;li&gt;利用已经拥有的信息生成一个专用的字典。&lt;/li&gt;
-&lt;li&gt;观察管理员会逛哪些比较大众性的网站，通过这些网站可能会看到他密码提示的一些内容。&lt;/li&gt;
+&lt;li&gt;观察管理员会逛哪些比较大众性的网站，通过这些网站可能会看到他密码提示的一些内容。&lt;br&gt;&lt;a name=&#34;b&#34;&gt;&lt;/a&gt;&lt;h3 id=&#34;windows-or-linux&#34;&gt;&lt;a href=&#34;#windows-or-linux&#34; class=&#34;headerlink&#34; title=&#34;windows or linux&#34;&gt;&lt;/a&gt;windows or linux&lt;/h3&gt;区分–&amp;gt; windows大小写不敏感，Linux大小写敏感&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;windows-or-linux&#34;&gt;&lt;a href=&#34;#windows-or-linux&#34; class=&#34;headerlink&#34; title=&#34;windows or linux&#34;&gt;&lt;/a&gt;windows or linux&lt;/h3&gt;&lt;p&gt; 区分–&amp;gt; windows大小写不敏感，Linux大小写敏感&lt;/p&gt;
 &lt;h3 id=&#34;有一个网站&#34;&gt;&lt;a href=&#34;#有一个网站&#34; class=&#34;headerlink&#34; title=&#34;有一个网站&#34;&gt;&lt;/a&gt;有一个网站&lt;/h3&gt;&lt;h4 id=&#34;如果知道（-xxx-xxxeditor-php-或（-xxx-admin-xxxx-php&#34;&gt;&lt;a href=&#34;#如果知道（-xxx-xxxeditor-php-或（-xxx-admin-xxxx-php&#34; class=&#34;headerlink&#34; title=&#34;如果知道（./xxx/xxxeditor.php)或（./xxx/admin/xxxx.php)&#34;&gt;&lt;/a&gt;如果知道（./xxx/xxxeditor.php)或（./xxx/admin/xxxx.php)&lt;/h4&gt;&lt;blockquote&gt;
 &lt;ol&gt;
 &lt;li&gt;直接在网站的二级文件xxx底下扫描敏感文件/目录。&lt;/li&gt;
@@ -491,7 +555,7 @@ python oneforall.py --targets ./example.txt run
 &lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;百度域名的查找&lt;/li&gt;
-&lt;li&gt;百度ip访查域名（通过这个ip查找挂在其下的有哪些域名）&lt;/li&gt;
+&lt;li&gt;百度ip反查域名（通过这个ip查找挂在其下的有哪些域名）&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;信息搜集流程&#34;&gt;&lt;a href=&#34;#信息搜集流程&#34; class=&#34;headerlink&#34; title=&#34;信息搜集流程&#34;&gt;&lt;/a&gt;信息搜集流程&lt;/h3&gt;&lt;blockquote&gt;
 &lt;ol&gt;
@@ -513,7 +577,7 @@ python oneforall.py --targets ./example.txt run
 &lt;li&gt;姓名&lt;/li&gt;
 &lt;li&gt;备案&lt;/li&gt;
 &lt;li&gt;邮箱&lt;/li&gt;
-&lt;li&gt;电话访查&lt;/li&gt;
+&lt;li&gt;电话反查&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;子域名 旁站  c段（ip的网段）&lt;/li&gt;
@@ -526,7 +590,7 @@ python oneforall.py --targets ./example.txt run
 &lt;li&gt;扫描网站目录&lt;br&gt; 爆破后台&lt;br&gt; 测试文件&lt;br&gt; 敏感文件&lt;/li&gt;
 &lt;li&gt;传输协议&lt;ul&gt;
 &lt;li&gt;exp&lt;/li&gt;
-&lt;li&gt;寻找相应源码&lt;/li&gt;
+&lt;li&gt;寻找相应源码&lt;br&gt;&lt;a name=&#34;b&#34;&gt;&lt;/a&gt;    &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
@@ -542,7 +606,7 @@ python oneforall.py --targets ./example.txt run
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;xss   sql注入  文件上传  命令注入     csrf    cookie安全检查     敏感信息     通信数据传输     暴力破解     越权访问     未授权访问     目录遍历     文件包含     重放攻击     服务器漏洞检测     漏洞扫描&lt;/li&gt;
+&lt;li&gt;xss   sql注入  文件上传  命令注入   csrf   cookie安全检查   敏感信息    通信数据传输  暴力破解    越权访问    未授权访问   目录遍历    文件包含    重放攻击    服务器漏洞检测     漏洞扫描&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;

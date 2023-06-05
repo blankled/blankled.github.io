@@ -117,12 +117,12 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://acg.xydwz.cn/api/api.php?769778"></li>
-          <li class="item" data-background-image="https://acg.xydwz.cn/api/api.php?771370"></li>
-          <li class="item" data-background-image="https://acg.xydwz.cn/api/api.php?457540"></li>
-          <li class="item" data-background-image="https://acg.xydwz.cn/api/api.php?755511"></li>
-          <li class="item" data-background-image="https://acg.xydwz.cn/api/api.php?404869"></li>
-          <li class="item" data-background-image="https://acg.xydwz.cn/api/api.php?371065"></li>
+          <li class="item" data-background-image="https://acg.xydwz.cn/api/api.php?834996"></li>
+          <li class="item" data-background-image="https://acg.xydwz.cn/api/api.php?63229"></li>
+          <li class="item" data-background-image="https://acg.xydwz.cn/api/api.php?115404"></li>
+          <li class="item" data-background-image="https://acg.xydwz.cn/api/api.php?150360"></li>
+          <li class="item" data-background-image="https://acg.xydwz.cn/api/api.php?394730"></li>
+          <li class="item" data-background-image="https://acg.xydwz.cn/api/api.php?317537"></li>
         </ul>
       </div>
     </header>
@@ -168,24 +168,21 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
   <div class="body md" itemprop="articleBody">
     
 
-    <h2 id="web"><a href="#web" class="headerlink" title="web"></a>web</h2><h3 id="cdn获取真实ip"><a href="#cdn获取真实ip" class="headerlink" title="cdn获取真实ip"></a>cdn获取真实ip</h3><ul>
+    <h2 id="web"><a href="#web" class="headerlink" title="web"></a>web</h2><p><a name="b"></a></p>
+<h3 id="cdn获取真实ip"><a href="#cdn获取真实ip" class="headerlink" title="cdn获取真实ip"></a>cdn获取真实ip</h3><ul>
 <li>方法一：<br>从全球各地去ping他的服务器（万一在一些穷乡僻壤的地方ping到了呢）</li>
 <li>方法二：<br>使用邮件订阅或RSS订阅的一种形式（大部分cdn不会防御件订阅或RSS订阅的东西）</li>
 <li>方法三：<br>ping二级域名（有些网站的二级域名可能不会做cdn）</li>
 <li>方法四：<br>用nslookup</li>
 <li>方法五：<br>查找一下域名的历史解析记录，毕竟域名再用cdn之前可能是用真实的ip</li>
-<li>F6：<br>phpinfo上可能显示他的真实ip</li>
-</ul>
-<h3 id="域名–渗透"><a href="#域名–渗透" class="headerlink" title="域名–渗透"></a>域名–渗透</h3><blockquote>
+<li>方法6：<br>phpinfo上可能显示他的真实ip<br><a name="b"></a><h3 id="域名–渗透"><a href="#域名–渗透" class="headerlink" title="域名–渗透"></a>域名–渗透</h3><blockquote>
 <p>1.确定站点是否是主站</p>
 <blockquote>
-<p>如果是，先进行子域名的挖掘，然后从子域名入手，确定一下使用了什么服务器（中间件），查看一下他的CMS，用什么编程语言，大概使用了什么数据库，有没有使用cdn，如果有cdn，则需要搜集一下网站的真实ip，然后看一下网站的源代码是不是存在着信息泄露，有时还可以进一步对网站进行信息搜集，比如：whois查询，ip访查，使用google进行查询（黑客引擎进行敏感信息的搜集），查看目标的功能模块有没有文件上传，sql注入，xss等等漏洞。</p>
+<p>如果是，先进行子域名的挖掘，然后从子域名入手，确定一下使用了什么服务器（中间件），查看一下他的CMS，用什么编程语言，大概使用了什么数据库，有没有使用cdn，如果有cdn，则需要搜集一下网站的真实ip，然后看一下网站的源代码是不是存在着信息泄露，有时还可以进一步对网站进行信息搜集，比如：whois查询，ip反查，使用google进行查询（黑客引擎进行敏感信息的搜集），查看目标的功能模块有没有文件上传，sql注入，xss等等漏洞。<br><a name="b"></a></p>
 </blockquote>
 </blockquote>
-<h3 id="扫描问题"><a href="#扫描问题" class="headerlink" title="扫描问题"></a>扫描问题</h3><ul>
-<li>Mysql 只扫到了80端口</li>
-</ul>
-<blockquote>
+<h3 id="扫描问题"><a href="#扫描问题" class="headerlink" title="扫描问题"></a>扫描问题</h3></li>
+<li>Mysql 只扫到了80端口<br><a name="b"></a><blockquote>
 <ol>
 <li>可能将Mysql端口改了</li>
 <li>也可能是站库分离</li>
@@ -199,15 +196,16 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
 </blockquote>
 </li>
 </ul>
+</li>
+</ul>
 <h3 id="搜集目标网站注册人的信息"><a href="#搜集目标网站注册人的信息" class="headerlink" title="搜集目标网站注册人的信息"></a>搜集目标网站注册人的信息</h3><ol>
 <li>考虑用telegram上的一些社工库，看一下有没有他泄露的一些密码，尝试使用其泄露的密码去登录网站的后台。</li>
 <li>搜索引擎搜索邮箱关键词，看看他有没有在网上发布一些言论。</li>
 <li>利用搜索到的一些关联信息去找出其他的关联信息（邮箱，账号等等）与其聊天，套取一些信息。</li>
 <li>用社会工程学的方法去找到他的一些社交帐号（可能会在里面找到管理员设置密码的一些习惯）。</li>
 <li>利用已经拥有的信息生成一个专用的字典。</li>
-<li>观察管理员会逛哪些比较大众性的网站，通过这些网站可能会看到他密码提示的一些内容。</li>
+<li>观察管理员会逛哪些比较大众性的网站，通过这些网站可能会看到他密码提示的一些内容。<br><a name="b"></a><h3 id="windows-or-linux"><a href="#windows-or-linux" class="headerlink" title="windows or linux"></a>windows or linux</h3>区分–&gt; windows大小写不敏感，Linux大小写敏感</li>
 </ol>
-<h3 id="windows-or-linux"><a href="#windows-or-linux" class="headerlink" title="windows or linux"></a>windows or linux</h3><p> 区分–&gt; windows大小写不敏感，Linux大小写敏感</p>
 <h3 id="有一个网站"><a href="#有一个网站" class="headerlink" title="有一个网站"></a>有一个网站</h3><h4 id="如果知道（-xxx-xxxeditor-php-或（-xxx-admin-xxxx-php"><a href="#如果知道（-xxx-xxxeditor-php-或（-xxx-admin-xxxx-php" class="headerlink" title="如果知道（./xxx/xxxeditor.php)或（./xxx/admin/xxxx.php)"></a>如果知道（./xxx/xxxeditor.php)或（./xxx/admin/xxxx.php)</h4><blockquote>
 <ol>
 <li>直接在网站的二级文件xxx底下扫描敏感文件/目录。</li>
@@ -241,7 +239,7 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
 </blockquote>
 <ul>
 <li>百度域名的查找</li>
-<li>百度ip访查域名（通过这个ip查找挂在其下的有哪些域名）</li>
+<li>百度ip反查域名（通过这个ip查找挂在其下的有哪些域名）</li>
 </ul>
 <h3 id="信息搜集流程"><a href="#信息搜集流程" class="headerlink" title="信息搜集流程"></a>信息搜集流程</h3><blockquote>
 <ol>
@@ -263,7 +261,7 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
 <li>姓名</li>
 <li>备案</li>
 <li>邮箱</li>
-<li>电话访查</li>
+<li>电话反查</li>
 </ul>
 </li>
 <li>子域名 旁站  c段（ip的网段）</li>
@@ -276,7 +274,7 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
 <li>扫描网站目录<br> 爆破后台<br> 测试文件<br> 敏感文件</li>
 <li>传输协议<ul>
 <li>exp</li>
-<li>寻找相应源码</li>
+<li>寻找相应源码<br><a name="b"></a>    </li>
 </ul>
 </li>
 </ol>
@@ -292,7 +290,7 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
 </li>
 </ul>
 </li>
-<li>xss   sql注入  文件上传  命令注入     csrf    cookie安全检查     敏感信息     通信数据传输     暴力破解     越权访问     未授权访问     目录遍历     文件包含     重放攻击     服务器漏洞检测     漏洞扫描</li>
+<li>xss   sql注入  文件上传  命令注入   csrf   cookie安全检查   敏感信息    通信数据传输  暴力破解    越权访问    未授权访问   目录遍历    文件包含    重放攻击    服务器漏洞检测     漏洞扫描</li>
 </ul>
 </li>
 </ol>
@@ -311,7 +309,7 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">更新于</span>
-    <time title="修改时间：2023-04-10 22:11:14" itemprop="dateModified" datetime="2023-04-10T22:11:14+08:00">2023-04-10</time>
+    <time title="修改时间：2023-04-15 10:08:58" itemprop="dateModified" datetime="2023-04-15T10:08:58+08:00">2023-04-15</time>
   </span>
 </div>
 
@@ -366,7 +364,7 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
     <div class="item left">
       
 
-  <a href="/2023/04/09/Internet%20Security/hello-world/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;acg.xydwz.cn&#x2F;api&#x2F;api.php?821891" title="SQL注入">
+  <a href="/2023/04/09/Internet%20Security/hello-world/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;acg.xydwz.cn&#x2F;api&#x2F;api.php?15804" title="SQL注入">
   <span class="type">上一篇</span>
   <span class="category"><i class="ic i-flag"></i> 网安</span>
   <h3>SQL注入</h3>
@@ -402,7 +400,7 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
       </div>
       <div class="related panel pjax" data-title="系列文章">
         <ul>
-          <li><a href="/2023/04/09/Internet%20Security/hello-world/" rel="bookmark" title="SQL注入">SQL注入</a></li><li class="active"><a href="/2023/04/10/Internet%20Security/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/" rel="bookmark" title="信息搜集">信息搜集</a></li><li><a href="/2023/04/11/Internet%20Security/OSINT/" rel="bookmark" title="OSINT">OSINT</a></li><li><a href="/2023/04/12/Internet%20Security/XSS/" rel="bookmark" title="XSS">XSS</a></li>
+          <li><a href="/2023/04/09/Internet%20Security/hello-world/" rel="bookmark" title="SQL注入">SQL注入</a></li><li class="active"><a href="/2023/04/10/Internet%20Security/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/" rel="bookmark" title="信息搜集">信息搜集</a></li><li><a href="/2023/04/11/Internet%20Security/OSINT/" rel="bookmark" title="OSINT">OSINT</a></li><li><a href="/2023/04/12/Internet%20Security/XSS/" rel="bookmark" title="XSS">XSS</a></li><li><a href="/2023/04/12/Internet%20Security/cdn/" rel="bookmark" title="cdn">cdn</a></li>
         </ul>
       </div>
       <div class="overview panel" data-title="站点概览">
@@ -416,7 +414,7 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">4</span>
+        <span class="count">5</span>
         <span class="name">文章</span>
       </a>
     </div>
@@ -526,17 +524,7 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
 <a href="/categories/%E7%BD%91%E5%AE%89/" title="分类于 网安">网安</a>
 </div>
 
-    <span><a href="/2023/04/12/Internet%20Security/XSS/" title="XSS">XSS</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E7%BD%91%E5%AE%89/" title="分类于 网安">网安</a>
-</div>
-
-    <span><a href="/2023/04/09/Internet%20Security/hello-world/" title="SQL注入">SQL注入</a></span>
+    <span><a href="/2023/04/10/Internet%20Security/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/" title="信息搜集">信息搜集</a></span>
   </li>
 
       
@@ -556,7 +544,27 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
 <a href="/categories/%E7%BD%91%E5%AE%89/" title="分类于 网安">网安</a>
 </div>
 
-    <span><a href="/2023/04/10/Internet%20Security/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/" title="信息搜集">信息搜集</a></span>
+    <span><a href="/2023/04/09/Internet%20Security/hello-world/" title="SQL注入">SQL注入</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E7%BD%91%E5%AE%89/" title="分类于 网安">网安</a>
+</div>
+
+    <span><a href="/2023/04/12/Internet%20Security/cdn/" title="cdn">cdn</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E7%BD%91%E5%AE%89/" title="分类于 网安">网安</a>
+</div>
+
+    <span><a href="/2023/04/12/Internet%20Security/XSS/" title="XSS">XSS</a></span>
   </li>
 
   </ul>
@@ -581,13 +589,13 @@ BLANK = 学无止境 = 与众不同，就一定会痛苦</title>
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="站点总字数">6k 字</span>
+    <span title="站点总字数">7k 字</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="站点阅读时长">24 分钟</span>
+    <span title="站点阅读时长">26 分钟</span>
   </div>
   <div class="powered-by">
     基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
